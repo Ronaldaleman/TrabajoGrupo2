@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class usuarioDatos
+    public class usuariosDatos
     {
         public void Insertar(Entidad.Usuarios a)
         {
@@ -78,6 +78,23 @@ namespace Datos
             {
                 if (dc != null)
                     dc.Dispose();
+            }
+        }
+
+        public Entidad.Usuarios GetUsuario(string userLogin)
+        {
+            Entidad.BD_EvaluacionEntities dc = null;
+            Entidad.Usuarios user = null;
+            try
+            {
+                dc = new Entidad.BD_EvaluacionEntities();
+                user = dc.Usuarios.Where(u => u.Login == userLogin).FirstOrDefault();
+                return user;
+            }
+            catch (Exception err)
+            {
+
+                throw (err);
             }
         }
     }

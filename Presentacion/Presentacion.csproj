@@ -183,6 +183,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="wfFormularioGrid.aspx" />
+    <Content Include="wfUsuarioAdd.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -412,6 +413,13 @@
     </Compile>
     <Compile Include="wfFormularioGrid.aspx.designer.cs">
       <DependentUpon>wfFormularioGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wfUsuarioAdd.aspx.cs">
+      <DependentUpon>wfUsuarioAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfUsuarioAdd.aspx.designer.cs">
+      <DependentUpon>wfUsuarioAdd.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
