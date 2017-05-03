@@ -182,7 +182,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="wfCambioClave.aspx" />
     <Content Include="wfFormularioGrid.aspx" />
+    <Content Include="wfLogin.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -399,6 +401,13 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="wfCambioClave.aspx.cs">
+      <DependentUpon>wfCambioClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfCambioClave.aspx.designer.cs">
+      <DependentUpon>wfCambioClave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="wfFormularioBase.aspx.cs">
       <DependentUpon>wfFormularioBase.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -412,6 +421,13 @@
     </Compile>
     <Compile Include="wfFormularioGrid.aspx.designer.cs">
       <DependentUpon>wfFormularioGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wfLogin.aspx.cs">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfLogin.aspx.designer.cs">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

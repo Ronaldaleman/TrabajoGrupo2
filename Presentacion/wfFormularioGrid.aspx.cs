@@ -9,7 +9,7 @@ namespace Presentacion
 {
     public partial class wfFormularioGrid : System.Web.UI.Page
     {
-   
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -141,5 +141,4 @@ namespace Presentacion
             }
         }
     }
-}
 }
