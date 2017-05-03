@@ -20,5 +20,6 @@ namespace Entidad
         public string Direccion { get; set; }
         public System.DateTime FechaProceso { get; set; }
         public int UsuarioProceso { get; set; }
+        public int Estado { get; set; }
     }
 }
