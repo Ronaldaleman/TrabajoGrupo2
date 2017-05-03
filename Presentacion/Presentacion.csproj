@@ -182,6 +182,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="wfFacturacion.aspx" />
     <Content Include="wfFormularioGrid.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -398,6 +399,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="wfFacturacion.aspx.cs">
+      <DependentUpon>wfFacturacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfFacturacion.aspx.designer.cs">
+      <DependentUpon>wfFacturacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="wfFormularioBase.aspx.cs">
       <DependentUpon>wfFormularioBase.aspx</DependentUpon>
