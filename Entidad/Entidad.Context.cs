@@ -25,11 +25,11 @@ namespace Entidad
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Empleados> Empleados { get; set; }
         public virtual DbSet<Factura_Detalle> Factura_Detalle { get; set; }
         public virtual DbSet<Facturas> Facturas { get; set; }
         public virtual DbSet<Productos> Productos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Clientes> Clientes { get; set; }
     }
 }

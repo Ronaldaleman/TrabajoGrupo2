@@ -30,8 +30,8 @@ namespace Entidad
         public System.DateTime FechaProceso { get; set; }
         public int UsuarioProceso { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Factura_Detalle> Factura_Detalle { get; set; }
+        public virtual Clientes Clientes { get; set; }
     }
 }
