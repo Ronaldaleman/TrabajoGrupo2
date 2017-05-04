@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <asp:Button ID="txtEntrar" runat="server" Text="ENTRAR" class="btn btn-info" Width="100%" Font-Bold="True" />
+                        <asp:Button ID="txtEntrar" runat="server" Text="ENTRAR" class="btn btn-info" Width="100%" Font-Bold="True" OnClick="txtEntrar_Click" />
                     </div>
                 </div>
             </div>
