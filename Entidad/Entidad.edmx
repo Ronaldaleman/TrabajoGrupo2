@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BD_EvaluacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BD_EvaluacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,6 +15,7 @@
           <Property Name="Direccion" Type="nvarchar" MaxLength="80" Nullable="false" />
           <Property Name="FechaProceso" Type="datetime" Nullable="false" />
           <Property Name="UsuarioProceso" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleados">
           <Key>
@@ -26,6 +27,7 @@
           <Property Name="Direccion" Type="nvarchar" MaxLength="80" Nullable="false" />
           <Property Name="FechaProceso" Type="datetime" Nullable="false" />
           <Property Name="UsuarioProceso" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Factura_Detalle">
           <Key>
@@ -63,6 +65,7 @@
           <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="FechaProceso" Type="datetime" Nullable="false" />
           <Property Name="UsuarioProceso" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -74,6 +77,7 @@
           <Property Name="Clave" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="Cedula" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="FechaProceso" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Factura_Detalle_Facturas">
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
@@ -131,8 +135,7 @@
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BD_EvaluacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -147,6 +150,7 @@
           <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioProceso" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleados">
           <Key>
@@ -158,6 +162,7 @@
           <Property Name="Direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioProceso" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Factura_Detalle">
           <Key>
@@ -200,6 +205,7 @@
           <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioProceso" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Factura_Detalle" Relationship="Self.FK_Factura_Detalle_Productos" FromRole="Productos" ToRole="Factura_Detalle" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -211,6 +217,7 @@
           <Property Name="Clave" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Facturas_Clientes">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
@@ -277,6 +284,7 @@
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="BD_EvaluacionModel.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
@@ -289,6 +297,7 @@
           <EntitySetMapping Name="Empleados">
             <EntityTypeMapping TypeName="BD_EvaluacionModel.Empleados">
               <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
@@ -329,6 +338,7 @@
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="BD_EvaluacionModel.Productos">
               <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Existencia" ColumnName="Existencia" />
@@ -341,6 +351,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="BD_EvaluacionModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Usuarios1" ColumnName="Usuarios" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
