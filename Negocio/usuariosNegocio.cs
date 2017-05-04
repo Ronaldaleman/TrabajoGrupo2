@@ -16,7 +16,7 @@ namespace Negocio
             {
                 Datos.usuariosDatos dc = new Datos.usuariosDatos();
                 Entidad.Usuarios userBD = dc.GetUsuario(user.Login);
-                user.Clave = CreateMD5(user.Clave);
+                
                 if (userBD == null)
                 {
                     user.Clave = CreateMD5(user.Clave);

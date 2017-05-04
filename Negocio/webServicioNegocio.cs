@@ -13,7 +13,7 @@ namespace Negocio
             try
             {
                 ServiciosUca.ServiciosUcaClient ws = new ServiciosUca.ServiciosUcaClient();
-                string resp = (ws.ValidarCedula(numeroCedula));
+                string resp = ws.ValidarCedula(numeroCedula);
                 return resp;
             }
             catch (Exception err)
