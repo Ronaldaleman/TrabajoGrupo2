@@ -19,7 +19,7 @@ namespace Negocio
                 
                 if (userBD == null)
                 {
-                    user.Clave = CreateMD5(user.Clave);
+                   // user.Clave = CreateMD5(user.Clave);
                     dc.Insertar(user);
                     resp = "1";
 

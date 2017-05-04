@@ -6,39 +6,34 @@
         <div class="panel-body">
             <fieldset class="form-group">
                 <legend>Datos Generales</legend>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Nombres y Apellidos</label>
                         <asp:RequiredFieldValidator ID="rqvNombre" runat="server"  ForeColor="Red" ControlToValidate="txtNombres"  ErrorMessage="Datos requeridos" ></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtNombres" runat="server" class="form-control" placeholder="Nombres y Apellidos" ></asp:TextBox>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Número de Cédula</label>
                         <asp:RequiredFieldValidator ID="rqvCedula" runat="server" ForeColor="Red" ControlToValidate="txtCedula"  ErrorMessage="Datos requeridos" ></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtCedula" runat="server" class="form-control" placeholder="Número de Cédula"></asp:TextBox>
                     </div>
                 </div>
-                
-                </fieldset>
-            <fieldset class="form-group">
-                <legend>Datos de Acceso</legend>
-                <div class="col-lg-6">
+                 <div class="col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Login</label>
                         <asp:RequiredFieldValidator ID="rqvLogin" runat="server" ErrorMessage="Datos requeridos"  ForeColor="Red" ControlToValidate="txtLogin"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtLogin" runat="server" class="form-control" placeholder="Login" ></asp:TextBox>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="form-group">
-                        <label class="control-label">Clave</label>
-                        <asp:RequiredFieldValidator ID="rqvClave" runat="server" ErrorMessage="Datos requeridos"  ForeColor="Red" ControlToValidate="txtClave"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="txtClave" runat="server" class="form-control" placeholder="Clave"></asp:TextBox>
+                         <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
                     </div>
                 </div>
-             </fieldset>   
+                </fieldset>
+           
                 
             <br />
             <asp:CustomValidator ID="cvDatos" runat="server"  ErrorMessage="Datos requeridos"></asp:CustomValidator>
@@ -48,7 +43,7 @@
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-danger" OnClick="btnGuardar_Click"  />
                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" class="btn btn-info" OnClick="btnLimpiar_Click" />
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-default" />
-                    <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
+                   
                 </div>
             </div>
         </div>

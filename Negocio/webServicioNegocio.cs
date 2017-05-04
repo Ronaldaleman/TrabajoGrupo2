@@ -10,10 +10,11 @@ namespace Negocio
     {
         public string ValidaCedula(string numeroCedula)
         {
+            ServiciosUca.ServiciosUcaClient ws = new ServiciosUca.ServiciosUcaClient();
+
             try
             {
-                ServiciosUca.ServiciosUcaClient ws = new ServiciosUca.ServiciosUcaClient();
-                string resp = ws.ValidarCedula(numeroCedula);
+                string resp = (ws.ValidarCedula(numeroCedula) == "1" ? "1" : "2");
                 return resp;
             }
             catch (Exception err)
@@ -21,7 +22,7 @@ namespace Negocio
 
                 throw (err);
             }
-
         }
+
     }
 }
