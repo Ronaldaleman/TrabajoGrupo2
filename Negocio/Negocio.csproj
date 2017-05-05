@@ -41,9 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ClientesNegocio.cs" />
+    <Compile Include="ProductosNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{b19251a8-c612-4447-9f35-966ebf17ae75}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
       <Project>{5fb0134b-c13f-4fda-bc5c-bbd99f7f5cb9}</Project>
       <Name>Entidad</Name>

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="wfFacturacion.aspx.cs" Inherits="Presentacion.wfFacturacion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+    
      <div class="panel panel-default">
         <div class="panel-heading">Facturación</div>
         <div class="panel-body">
@@ -16,19 +16,22 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-                        <div class="form-group">
-                            <label class="control-label">Cliente</label>                            
-                            <asp:TextBox ID="txtCliente" runat="server" class="form-control" placeholder="000"></asp:TextBox>                            
-                        </div>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                            <label class="control-label" for="txtCliente">Cliente</label>                        
                     </div>
-                    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-                        <div class="form-group">
-                            <label class="control-label">Nombre</label>
-                            <asp:TextBox ID="txtNombre" runat="server" class="form-control" ></asp:TextBox>                    
-                        </div>                           
+                    <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 "> 
+                        <asp:TextBox ID="txtCliente" runat="server" class="form-control" placeholder="000"> </asp:TextBox> 
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> 
+                     <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 "> 
+                        <asp:Button id="btnBuscarCliente" runat="server" Text="..." CausesValidation="False" OnClick="btnBuscarCliente_Click"></asp:Button>
+                    </div>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                        <label class="control-label">Nombre</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 "> 
+                            <asp:TextBox ID="txtNombre" runat="server" class="form-control" disabled ="disabled"></asp:TextBox> 
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6"> 
                         <asp:RequiredFieldValidator ID="rfvCliente" runat="server" ErrorMessage="Debe digitar el código del cliente." ControlToValidate="txtCliente" CssClass="alert-danger"></asp:RequiredFieldValidator>                  
                     </div>
                 </div>
@@ -37,12 +40,11 @@
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="form-group">
                             <label class="control-label">Producto</label>
-                             <asp:DropDownList ID="ddlProducto" runat="server" class="form-control"  >                            
-                             </asp:DropDownList>    
+                             <asp:DropDownList ID="ddlProducto" runat="server" class="form-control" AppendDataBoundItems="true" ></asp:DropDownList>    
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <%--<asp:RequiredFieldValidator ID="rfvProducto" runat="server" ErrorMessage="Debe seleccionar el producto." ControlToValidate="ddlProducto" CssClass="alert-danger"></asp:RequiredFieldValidator>--%>
+                        <asp:RequiredFieldValidator ID="rfvProducto" runat="server" InitialValue="0" ErrorMessage="Debe seleccionar el producto." ControlToValidate="ddlProducto" CssClass="alert-danger"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -61,7 +63,7 @@
                 <div class="row">
                     <div class="text-center">
                         <div class="form-group">
-                            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" class="btn btn-info" />
+                            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" class="btn btn-info" OnClick="btnAgregar_Click"/>
                         </div>
                     </div>
                 </div>
@@ -138,16 +140,11 @@
                             </asp:TemplateField>
 
                             <%--campos no editables...--%>
-                            <asp:BoundField DataField="S_Nomb_Usuario" HeaderText="Nombres" InsertVisible="False" ReadOnly="True" SortExpression="Nombres" ControlStyle-Width="20%" />
+                            <asp:BoundField DataField="S_Producto" HeaderText="Producto" InsertVisible="False" ReadOnly="True" SortExpression="Producto" ControlStyle-Width="20%" />
                             <%--ControlStyle-Width="70px"--%>
-                            <asp:BoundField DataField="S_Apell_Usuario" HeaderText="Apellidos" InsertVisible="False" ReadOnly="True" SortExpression="Apellidos" ControlStyle-Width="20%" />
-                            <asp:BoundField DataField="S_Cedula" HeaderText="Número Cédula" ReadOnly="True" SortExpression="Cédula" ControlStyle-Width="10%" />
-                            <asp:BoundField DataField="S_Inss" HeaderText="Número INSS" ReadOnly="True" SortExpression="INSS" ControlStyle-Width="10%" />
-                            <asp:BoundField DataField="S_Email" HeaderText="Email" ReadOnly="True" SortExpression="Email" ControlStyle-Width="10%" />
-                            <asp:BoundField DataField="B_Extranjero" HeaderText="Extranjero" ReadOnly="True" SortExpression="Extranjero" ControlStyle-Width="5%" />
-                            <asp:BoundField DataField="cargo" HeaderText="Cargo" ReadOnly="True" SortExpression="Cargo" ControlStyle-Width="10%" />
-                            <asp:BoundField DataField="c_ctr" HeaderText="Centro de Costo" ReadOnly="True" SortExpression="Centro Costo" ControlStyle-Width="10%" />
-                            <asp:BoundField DataField="C_caja" HeaderText="Caja Asignada" ReadOnly="True" SortExpression="Caja" ControlStyle-Width="5%" />
+                            <asp:BoundField DataField="S_Cantidad" HeaderText="Cantidad" InsertVisible="False" ReadOnly="True" SortExpression="Cantidad" ControlStyle-Width="20%" />
+                            <asp:BoundField DataField="S_Precio_Unitario" HeaderText="Precio Unitario" ReadOnly="True" SortExpression="Precio Unitario" ControlStyle-Width="10%" />
+                            <asp:BoundField DataField="S_Importe" HeaderText="Importe" ReadOnly="True" SortExpression="Importe" ControlStyle-Width="10%" />
                         </Columns>
                     </asp:GridView>
                 </div>
