@@ -21,6 +21,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <asp:Label ID="lblMensaje" runat="server" Text="" ForeColor="red"></asp:Label>
+                        <asp:CustomValidator ID="cvError" runat="server" ErrorMessage="" ForeColor="red"></asp:CustomValidator>
                     </div>
                 </div>
                 <div class="col-md-12">

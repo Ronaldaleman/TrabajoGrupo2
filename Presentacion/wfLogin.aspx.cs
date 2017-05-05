@@ -15,30 +15,71 @@ namespace Presentacion
         }
 
         protected void txtEntrar_Click(object sender, EventArgs e)
-        {//EVALUACION
+        {
             string login = txtLogin.Text.ToUpper().Trim(), password = txtPassword.Text.ToUpper().Trim();
-            Negocio.CCryptorEngine dcE = new Negocio.CCryptorEngine();
-
-            int existeUsuario = 1;
-
-            //si usuario existe se procede a evaluar los datos del usuario
-            if (existeUsuario == 1)
+            Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
+            try
             {
-                //evaluamos si la contraseña no es la generica
+                int existeUsuario = dc.existeUsuario(login);
+
+                switch (existeUsuario)
+                {
+                    //usuario no existe
+                    case 0:
+                        lblMensaje.Text = lblMensaje.Text = "Usuario no existe, favor verifique";
+                        break;
+                    //si existe se validan que los datos sean correctos
+                    case 1:
+                        evaluaDatos(password, login);
+                        break;
+                    //usuario esta inactivo
+                    case 3:
+                        lblMensaje.Text = "Usuario se encuentra inactivo";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception err)
+            {
+                cvError.IsValid = false;
+                cvError.Text = "Ocurrio un error, favor verifique";
+            }
+            
+            
+        }
+
+        public void evaluaDatos(string password, string login)
+        {
+            Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
+            //evaluamos si la contraseña no es la generica
+            try
+            {
                 if (password != "EVALUACION")
                 {
-                    string passEncriptado = dcE.Encriptar(password);
-                    //se manda login y pass para validar traer la endidad del usuario logueado0o
+                    string passEncriptado = dc.CreateMD5(password);
+                    if (dc.validaDatos(login, passEncriptado) == 1)
+                    {
+                        Session.Add("sessionIDUsuario", dc.devolverID(login));
+                        Response.Redirect("Default.aspx");
+                    }
+                    else
+                    {
+                        lblMensaje.Text = "Usuario o contraseña incorrectos";
+                    }
                 }
                 else
                 {
+                    Session.Add("sessionIDUsuario", dc.devolverID(login));
                     Response.Redirect("wfCambioClave.aspx");
                 }
             }
-            else
+            catch (Exception err)
             {
-                lblMensaje.Text = "Usuario no existe, favor verifique";
+                cvError.IsValid = false;
+                cvError.Text = "Ocurrio un error, favor verifique";
             }
+           
         }
     }
 }
