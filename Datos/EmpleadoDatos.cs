@@ -51,7 +51,7 @@ namespace Datos
             }
         }
 
-        public List<Entidad.Empleados> ListaEmpleados()
+        public List<Entidad.Empleados> ListaEmpleado()
         {
             dc = new Entidad.BD_EvaluacionEntities();
             try

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UCA.Servicios" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UCA.Servicios" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfSistemas">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sistemas" nillable="true" type="tns:Sistemas" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSistemas" nillable="true" type="tns:ArrayOfSistemas" />
+  <xs:complexType name="Sistemas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdSistema" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sistema" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrlSistema" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sistemas" nillable="true" type="tns:Sistemas" />
+  <xs:complexType name="UsuarioPermisos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C_caja" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="C_costo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cedula" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumInss" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opciones" nillable="true" type="tns:ArrayOfOpciones" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UsuarioPermisos" nillable="true" type="tns:UsuarioPermisos" />
+  <xs:complexType name="ArrayOfOpciones">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Opciones" nillable="true" type="tns:Opciones" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOpciones" nillable="true" type="tns:ArrayOfOpciones" />
+  <xs:complexType name="Opciones">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdOpcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Menu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nivel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrlOpcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Opciones" nillable="true" type="tns:Opciones" />
+  <xs:complexType name="ArrayOfSubordinados">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Subordinados" nillable="true" type="tns:Subordinados" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubordinados" nillable="true" type="tns:ArrayOfSubordinados" />
+  <xs:complexType name="Subordinados">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C_costo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Inss_subordinado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Subordinados" nillable="true" type="tns:Subordinados" />
+  <xs:complexType name="DatosJefe">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="centro_costo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatosJefe" nillable="true" type="tns:DatosJefe" />
+  <xs:complexType name="OPS_request">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="c_estructura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_servicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="carnet" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="periodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OPS_request" nillable="true" type="tns:OPS_request" />
+  <xs:complexType name="OPS_response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numero_ops" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OPS_response" nillable="true" type="tns:OPS_response" />
+  <xs:complexType name="Datos_OPS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="estructura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha_emision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="moneda" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="monto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numero_ops" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="periodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="servicio" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Datos_OPS" nillable="true" type="tns:Datos_OPS" />
+  <xs:complexType name="ArrayOfDatos_OPS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Datos_OPS" nillable="true" type="tns:Datos_OPS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatos_OPS" nillable="true" type="tns:ArrayOfDatos_OPS" />
+</xs:schema>

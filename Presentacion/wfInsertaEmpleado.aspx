@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="wfInsertaEmpleado.aspx.cs" Inherits="Presentacion.wfIsertaEmpledo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="wfInsertaEmpleado.aspx.cs" Inherits="Presentacion.wfInsertaEmpleado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="panel panel-default">
         <div class="panel-heading">Registro de Empleado</div>
@@ -44,9 +44,9 @@
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
-                    <asp:Button ID="txtEntrar" runat="server" Text="Guardar" class="btn btn-success" OnClick="txtEntrar_Click" />
-                    <asp:Button ID="Button1" runat="server" Text="Limpiar" class="btn btn-info" />
-                    <asp:Button ID="Button2" runat="server" Text="Cancelar" class="btn btn-default" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-success" OnClick="btnGuardar_Click"/>
+                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" class="btn btn-info" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-default" />
                 </div>
             </div>
         </div>

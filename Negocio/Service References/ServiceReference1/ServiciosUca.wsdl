@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiciosUca" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://webservices.uca.edu.ni:8081/ServiciosUca.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://webservices.uca.edu.ni:8081/ServiciosUca.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://webservices.uca.edu.ni:8081/ServiciosUca.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UCA.Servicios" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiciosUca_ValidarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ValidarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ValidarPermisos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarPermisos" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ValidarPermisos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarPermisosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ValidarCedula_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarCedula" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ValidarCedula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarCedulaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_EliminarRegistroSesion_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRegistroSesion" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_EliminarRegistroSesion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRegistroSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ConsultaSubordinados_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaSubordinados" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ConsultaSubordinados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaSubordinadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ConsultaJefe_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaJefe" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_ConsultaJefe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaJefeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_OPS_prematricula_InputMessage">
+    <wsdl:part name="parameters" element="tns:OPS_prematricula" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_OPS_prematricula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OPS_prematriculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_Consulta_OPS_InputMessage">
+    <wsdl:part name="parameters" element="tns:Consulta_OPS" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_Consulta_OPS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Consulta_OPSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_Consulta_OPS_Carnet_InputMessage">
+    <wsdl:part name="parameters" element="tns:Consulta_OPS_Carnet" />
+  </wsdl:message>
+  <wsdl:message name="IServiciosUca_Consulta_OPS_Carnet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Consulta_OPS_CarnetResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiciosUca">
+    <wsdl:operation name="ValidarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/ValidarUsuario" message="tns:IServiciosUca_ValidarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/ValidarUsuarioResponse" message="tns:IServiciosUca_ValidarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarPermisos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/ValidarPermisos" message="tns:IServiciosUca_ValidarPermisos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/ValidarPermisosResponse" message="tns:IServiciosUca_ValidarPermisos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarCedula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/ValidarCedula" message="tns:IServiciosUca_ValidarCedula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/ValidarCedulaResponse" message="tns:IServiciosUca_ValidarCedula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRegistroSesion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/EliminarRegistroSesion" message="tns:IServiciosUca_EliminarRegistroSesion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/EliminarRegistroSesionResponse" message="tns:IServiciosUca_EliminarRegistroSesion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaSubordinados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/ConsultaSubordinados" message="tns:IServiciosUca_ConsultaSubordinados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/ConsultaSubordinadosResponse" message="tns:IServiciosUca_ConsultaSubordinados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaJefe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/ConsultaJefe" message="tns:IServiciosUca_ConsultaJefe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/ConsultaJefeResponse" message="tns:IServiciosUca_ConsultaJefe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OPS_prematricula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/OPS_prematricula" message="tns:IServiciosUca_OPS_prematricula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/OPS_prematriculaResponse" message="tns:IServiciosUca_OPS_prematricula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_OPS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/Consulta_OPS" message="tns:IServiciosUca_Consulta_OPS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/Consulta_OPSResponse" message="tns:IServiciosUca_Consulta_OPS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_OPS_Carnet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiciosUca/Consulta_OPS_Carnet" message="tns:IServiciosUca_Consulta_OPS_Carnet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiciosUca/Consulta_OPS_CarnetResponse" message="tns:IServiciosUca_Consulta_OPS_Carnet_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiciosUca" type="tns:IServiciosUca">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/ValidarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarPermisos">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/ValidarPermisos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarCedula">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/ValidarCedula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRegistroSesion">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/EliminarRegistroSesion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaSubordinados">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/ConsultaSubordinados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaJefe">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/ConsultaJefe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OPS_prematricula">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/OPS_prematricula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_OPS">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/Consulta_OPS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_OPS_Carnet">
+      <soap:operation soapAction="http://tempuri.org/IServiciosUca/Consulta_OPS_Carnet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiciosUca">
+    <wsdl:port name="BasicHttpBinding_IServiciosUca" binding="tns:BasicHttpBinding_IServiciosUca">
+      <soap:address location="http://webservices.uca.edu.ni:8081/ServiciosUca.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
