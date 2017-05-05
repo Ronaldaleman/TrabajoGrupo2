@@ -33,8 +33,8 @@ namespace Presentacion
             }
             catch (Exception)
             {
-
-                throw;
+                cvError.IsValid = false;
+                cvError.Text = "Ocurrio un error, favor verifique";
             }
         }
     }
