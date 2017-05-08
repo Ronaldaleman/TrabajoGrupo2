@@ -16,9 +16,9 @@ namespace Presentacion
 
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtNombres.Text = "";
-            txtCedula.Text = "";
-            txtLogin.Text = "";
+            txtNombres.Text = " ";
+            txtCedula.Text = " ";
+            txtLogin.Text = " ";
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
