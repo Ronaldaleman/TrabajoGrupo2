@@ -24,5 +24,22 @@ namespace Negocio
             }
             return productos;
         }
+
+        /*METODO ENCARGADO DE OBTENER LOS DATOS DEL PRODUCTOS*/
+        public Entidad.Productos DatosProducto(int id)
+        {
+            Datos.ProductosDatos dc = null;
+            Entidad.Productos p = new Entidad.Productos();
+            try
+            {
+                dc = new Datos.ProductosDatos();
+                p = dc.DatosProducto(id);
+            }
+            catch (Exception err)
+            {
+                throw (err);
+            }
+            return p;
+        }
     }
 }

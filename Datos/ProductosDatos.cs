@@ -24,5 +24,22 @@ namespace Datos
             }
             return productos;
         }
+
+        /*METODO ENCARGADO DE OBTENER LOS DATOS DEL PRODUCTOS*/
+        public Entidad.Productos DatosProducto(int id)
+        {
+            Entidad.BD_EvaluacionEntities dc = null;
+            Entidad.Productos p = new Entidad.Productos();
+            try
+            {
+                dc = new Entidad.BD_EvaluacionEntities();
+                p = dc.Productos.Where(pro => pro.Id == id).FirstOrDefault();
+            }
+            catch (Exception err)
+            {
+                throw (err);
+            }
+            return p;
+        }
     }
 }

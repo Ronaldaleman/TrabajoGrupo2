@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ClientesDatos.cs" />
+    <Compile Include="FacturasDatos.cs" />
+    <Compile Include="Factura_DetalleDatos.cs" />
     <Compile Include="ProductosDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

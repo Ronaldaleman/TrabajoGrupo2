@@ -19,7 +19,7 @@
                     <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
                             <label class="control-label" for="txtCliente">Cliente</label>                        
                     </div>
-                    <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 "> 
+                    <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 ">                         
                         <asp:TextBox ID="txtCliente" runat="server" class="form-control" placeholder="000"> </asp:TextBox> 
                     </div>
                      <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 "> 
@@ -28,11 +28,14 @@
                     <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
                         <label class="control-label">Nombre</label>
                     </div>
-                    <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 "> 
-                            <asp:TextBox ID="txtNombre" runat="server" class="form-control" disabled ="disabled"></asp:TextBox> 
+                    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 "> 
+                        <asp:TextBox ID="txtNombre" runat="server" class="form-control" disabled ="disabled"></asp:TextBox> 
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6"> 
                         <asp:RequiredFieldValidator ID="rfvCliente" runat="server" ErrorMessage="Debe digitar el código del cliente." ControlToValidate="txtCliente" CssClass="alert-danger"></asp:RequiredFieldValidator>                  
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6">
+                        <asp:RangeValidator ID="rvCliente" runat="server" ErrorMessage="Debe digitar el formato correcto." ControlToValidate="txtCliente" CssClass="alert-danger" MinimumValue="0" MaximumValue="999" Type="Integer"></asp:RangeValidator>
                     </div>
                 </div>
 
@@ -57,7 +60,10 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <asp:RequiredFieldValidator ID="rfvCantidad" runat="server" ErrorMessage="Debe digitar la cantidad del producto." ControlToValidate="txtCantidad" CssClass="alert-danger"></asp:RequiredFieldValidator>
-                    </div>                           
+                    </div>    
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> 
+                        <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Debe digitar el formato correcto." ControlToValidate="txtCantidad" CssClass="alert-danger" MinimumValue="0" MaximumValue="999" Type="Integer"></asp:RangeValidator>
+                    </div>                       
                 </div>
 
                 <div class="row">
@@ -76,7 +82,7 @@
                     <asp:GridView ID="gvFactura" runat="server"
                         AutoGenerateColumns="false"
                         CssClass="table table-bordered bs-table"
-                        DataKeyNames="C_Usuario"
+                        DataKeyNames="UsuarioProceso"
                         Width="100%"
                         PageSize="5"
                         AllowPaging="true">
@@ -127,24 +133,24 @@
                             <%--botones de acción sobre los registros...--%>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lkbEliminar" Text="ELIMINAR" CommandName="ELIMINAR" CommandArgument='<%# Eval("C_Usuario") %>'
+                                    <asp:LinkButton ID="lkbEliminar" Text="ELIMINAR" CommandName="ELIMINAR" CommandArgument='<%# Eval("UsuarioProceso") %>'
                                         OnClientClick='if(!confirm("¿ESTA SEGURO QUE DESEA ELIMINAR EL REGISTRO?"))return false'
                                         runat="server" CssClass="btn btn-danger btn-sm" ToolTip="ELIMINAR"><span class="glyphicon glyphicon glyphicon-trash"></span></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lkbEditar" Text="EDITAR" CommandName="EDITAR" CommandArgument='<%# Eval("C_Usuario") %>'
+                                    <asp:LinkButton ID="lkbEditar" Text="EDITAR" CommandName="EDITAR" CommandArgument='<%# Eval("UsuarioProceso") %>'
                                         runat="server" CssClass="btn btn-info btn-sm" ToolTip="EDITAR"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
                             <%--campos no editables...--%>
-                            <asp:BoundField DataField="S_Producto" HeaderText="Producto" InsertVisible="False" ReadOnly="True" SortExpression="Producto" ControlStyle-Width="20%" />
+                            <asp:BoundField DataField="Producto" HeaderText="Producto" InsertVisible="False" ReadOnly="True" SortExpression="Producto" ControlStyle-Width="20%" />
                             <%--ControlStyle-Width="70px"--%>
-                            <asp:BoundField DataField="S_Cantidad" HeaderText="Cantidad" InsertVisible="False" ReadOnly="True" SortExpression="Cantidad" ControlStyle-Width="20%" />
-                            <asp:BoundField DataField="S_Precio_Unitario" HeaderText="Precio Unitario" ReadOnly="True" SortExpression="Precio Unitario" ControlStyle-Width="10%" />
-                            <asp:BoundField DataField="S_Importe" HeaderText="Importe" ReadOnly="True" SortExpression="Importe" ControlStyle-Width="10%" />
+                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" InsertVisible="False" ReadOnly="True" SortExpression="Cantidad" ControlStyle-Width="20%" />
+                            <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio Unitario" ReadOnly="True" SortExpression="Precio Unitario" ControlStyle-Width="10%" />
+                            <asp:BoundField DataField="Importe" HeaderText="Importe" ReadOnly="True" SortExpression="Importe" ControlStyle-Width="10%" />
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -176,7 +182,7 @@
             <div class="container">
                 <div class="row">
                     <div class="text-center">                    
-                        <asp:Button ID="btnFacturar" runat="server" Text="Facturar" class="btn btn-success" />  
+                        <asp:Button ID="btnFacturar" runat="server" Text="Facturar" class="btn btn-success" OnClick="btnFacturar_Click" />  
                         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-danger" />
                     </div>
                 </div>
