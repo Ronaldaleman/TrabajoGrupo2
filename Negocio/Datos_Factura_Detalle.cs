@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    /*CLASE DEDICADA A ALMACENAR LOS DATOS A ALMACENAR LOS DATOS DEL DETALLE DE LA FACTURA*/
+    /*CLASE DEDICADA A ALMACENAR LOS DATOS DEL DETALLE DE LA FACTURA*/
     public class Datos_Factura_Detalle
     {
         public int IdFactura { get; set; }

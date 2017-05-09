@@ -54,9 +54,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a runat="server" href="#">Opción 1</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opción 2 Despleglable<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Facturación<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Sub-1</a></li>
+                                <li><a href="wfFacturacion.aspx">Facturar</a></li>
                                 <li><a href="#">Sub-2</a></li>
                                 <li><a href="#">Sub 3</a></li>
                             </ul>

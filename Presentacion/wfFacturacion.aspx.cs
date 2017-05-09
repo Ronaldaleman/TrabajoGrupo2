@@ -27,40 +27,6 @@ namespace Presentacion
             txtFecha.Text = today;
         }
 
-        [WebMethod()]
-        public string BuscarCliente(int ID)
-        {
-            Response.Write("<script language=javascript>alert('entre al metodo de busqueda de cliente');</script>");
-            string nombre = "";
-            try
-            {
-                /*int CodCliente;
-                CodCliente = int.Parse(txtCliente.Text.Trim());*/
-                Entidad.Clientes cliente = null;
-                Negocio.ClientesNegocio dc = new Negocio.ClientesNegocio();
-                cliente = dc.ObtenerDatosCliente(ID);
-                if (cliente != null)
-                {
-                    txtNombre.Text = cliente.Nombre.Trim();
-                    nombre = cliente.Nombre.Trim();
-                    txtCliente.Enabled = false;
-                    cvDatos.ErrorMessage = nombre;
-                }
-                else
-                {
-                    cvDatos.IsValid = false;
-                    cvDatos.CssClass = "alert-danger";
-                    cvDatos.ErrorMessage = "No se encontraron datos del cliente. Favor verificar el código digitado.";
-                }
-            }
-            catch (Exception err)
-            {
-                cvDatos.IsValid = false;
-                cvDatos.CssClass = "alert-danger";
-                cvDatos.ErrorMessage = err.Message;
-            }
-            return nombre;
-        }
 
 
         /*EVENTO ENCARGADO DE REALIZAR LA BUSQUEDA DEL CLIENTE*/
@@ -133,20 +99,13 @@ namespace Presentacion
                         /*SE RECORRE LA LISTA DE REGISTRO EN EL GRID PARA OBTENER EL IMPORTE*/
                         decimal SumaImporte = 0;
                         foreach (var item in dfd)
-                            {                            
-                            /*if (ddlProducto.SelectedItem.Text == item.Producto)
-                            {
-                                cvDatos.IsValid = false;
-                                cvDatos.ErrorMessage = "El producto ya fue seleccionado.";
-                                cvDatos.CssClass = "alert-danger";
-                            }*//*CIERRE IF VALIDACION DE LA SELECCION DEL PRODUCTO REPETIDO*/
+                        {            
                             df.Cantidad = int.Parse(txtCantidad.Text);
                             df.PrecioUnitario = pro.PrecioUnitario;
                             df.Importe = (df.Cantidad * df.PrecioUnitario);
                             SumaImporte += Convert.ToInt32(item.Importe);  //aqui recorre las celdas y las va sumando
                             txtSubTotal.Text = SumaImporte.ToString();
                         } /*CIERRE FOREACH*/
-
                     }/*CIERRE DEL IF SI LA SESION O GRID NO ESTA VACIO*/
                     else
                     {
@@ -160,8 +119,7 @@ namespace Presentacion
                         Session.Add("s_Detalle_Factura", dfd);
                         gvFactura.DataSource = dfd;
                         gvFactura.DataBind();
-                    } /*CIERRE ELSE SI ES LA PRIMERA FILA A AGREGAR AL GRID*/
-                                   
+                    } /*CIERRE ELSE SI ES LA PRIMERA FILA A AGREGAR AL GRID*/                                   
                     /*CALCULAMOS EL IMPUESTO DE LA FACTURA*/
                     decimal Impuesto = 0;
                     Impuesto = (decimal.Parse(txtSubTotal.Text) * 15) / 100;
@@ -169,9 +127,8 @@ namespace Presentacion
                     /*CALCULAMOS EL NETO DE LA FACTURA*/
                     decimal Total = 0;
                     Total = decimal.Parse(txtSubTotal.Text) + decimal.Parse(txtImpuesto.Text);
-                    txtTotal.Text = Total.ToString();                    
+                    txtTotal.Text = Total.ToString();  
                 } /*CIERRE DEL ELSE SI HAY EN EXISTENCIA PRODUCTO*/
-
             }
             catch (Exception err)
             {
@@ -214,10 +171,12 @@ namespace Presentacion
             }
         }
 
+        /*EVENTO ENCARGADO DE REALIZAR LA FACTURACION*/
         protected void btnFacturar_Click(object sender, EventArgs e)
         {
             try
-            {
+            {              
+                bool inserto = false;
                 Negocio.FacturasNegocio factneg = new Negocio.FacturasNegocio();
                 Entidad.Facturas f = new Entidad.Facturas();
                 /*SE ASIGNAN LOS DATOS A LA ENTIDAD FACTURA*/
@@ -229,11 +188,20 @@ namespace Presentacion
                 f.Estado = 1;
                 f.FechaProceso = DateTime.Now;
                 f.UsuarioProceso = 1;
-
                 List<Negocio.Datos_Factura_Detalle> dfd = (List<Negocio.Datos_Factura_Detalle>)Session["s_Detalle_Factura"];
-                factneg.NuevaFactura(f, dfd);
-
-
+                inserto = factneg.NuevaFactura(f, dfd);
+                if (inserto == true)
+                {
+                    cvDatos.IsValid = false;
+                    cvDatos.ErrorMessage = "La factura se guardo sin problemas.";
+                    cvDatos.CssClass = "alert-success";
+                }
+                else
+                {
+                    cvDatos.IsValid = false;
+                    cvDatos.ErrorMessage = "Hubo un error al facturar.";
+                    cvDatos.CssClass = "alert-danger";
+                }                
             }
             catch (Exception err)
             {
@@ -243,6 +211,150 @@ namespace Presentacion
             }
 
         }
-    }  
-}
 
+        /*ESTE EVENTO REALIZA EL RESETEO DE LOS CONTROLES DE LA VENTANA*/
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                limpiarControles();
+            }
+            catch (Exception err)
+            {
+                cvDatos.IsValid = false;
+                cvDatos.ErrorMessage = "Hubo un error al limpiar los controles, " + err.Message;
+                cvDatos.CssClass = "alert-danger";
+            }
+        }
+
+        /*METODO ENCARGADO DE REALIZAR LA LIMPIEZA DE LOS CONTROLES*/
+        public void limpiarControles()
+        {
+            try
+            {
+                Session.Remove("s_Detalle_Factura");
+                ObtenerFecha();
+                txtCliente.Text = "";
+                txtNombre.Text = "";
+                //ddlProducto.SelectedIndex = 0;
+                ddlProducto.ClearSelection();
+                txtCantidad.Text = "";
+                gvFactura.DataSource = null;
+                gvFactura.DataBind();
+                txtSubTotal.Text = "";
+                txtImpuesto.Text = "";
+                txtTotal.Text = "";
+
+            }
+            catch (Exception err)
+            {
+                cvDatos.IsValid = false;
+                cvDatos.ErrorMessage = "Hubo un error al limpiar los controles, " + err.Message;
+                cvDatos.CssClass = "alert-danger";
+            }
+        }
+
+        #region/*PAGINACION GRIDVIEW*/
+        protected void IraPag(object sender, EventArgs e)
+        {
+            TextBox _IraPag = (TextBox)sender;
+            int _NumPag = 0;
+
+            if (int.TryParse(_IraPag.Text, out _NumPag) && _NumPag > 0 && _NumPag <= this.gvFactura.PageCount)
+            {
+                if (int.TryParse(_IraPag.Text, out _NumPag) && _NumPag > 0 && _NumPag <= this.gvFactura.PageCount)
+                {
+                    this.gvFactura.PageIndex = _NumPag - 1;
+                    //cargarUsuarios();
+                    gvFactura.DataSource = Session["s_Detalle_Factura"];
+                    gvFactura.DataBind();
+                }
+                else
+                {
+                    this.gvFactura.PageIndex = 0;
+                    //cargarUsuarios();
+                    gvFactura.DataSource = Session["s_Detalle_Factura"];
+                    gvFactura.DataBind();
+                }
+            }
+
+            this.gvFactura.SelectedIndex = -1;
+        }
+
+        private int getpageindex(GridView gv, string clave)
+        {
+            if (clave == "Firts")
+            {
+                return 0;
+            }
+
+            else if (clave == "Next")
+            {
+                return gv.PageIndex + 1;
+            }
+
+            if (clave == "Last")
+            {
+                return gv.PageCount - 1;
+            }
+
+            else if (clave == "Prev")
+            {
+                return gv.PageIndex - 1;
+            }
+
+            else
+            {
+                return gv.PageIndex;
+            }
+        }
+
+        protected void gvFactura_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Pager)
+            {
+                //PAGINADO
+                //TOTAL PAGINAS
+                Label _TotalPags = (Label)e.Row.FindControl("lblTotalNumberOfPages");
+                _TotalPags.Text = gvFactura.PageCount.ToString();
+                // IR A PAGINA
+                TextBox _IraPag = (TextBox)e.Row.FindControl("IraPag");
+                _IraPag.Text = (gvFactura.PageIndex + 1).ToString();
+
+                // ASIGNA AL DROPDOWNLIST COMO VALOR SELECCIONADO EL PAGESIZE ACTUAL
+                DropDownList _DropDownList = (DropDownList)e.Row.FindControl("RegsPag");
+                _DropDownList.SelectedValue = gvFactura.PageSize.ToString();
+            }
+            else if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // APLICA ESTILOS A EVENTOS ON MOUSE OVER Y OUT
+                e.Row.Attributes.Add("OnMouseOut", "this.className = this.orignalclassName;");
+                //e.Row.Attributes.Add("OnMouseOver", "this.orignalclassName = this.className;this.className = 'altoverow';");
+            }
+        }
+
+        protected void RegsPag_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //CAMBIAR NUMERO DE FILAS A MOSTRAR
+            //OBTIENE EL NUMERO ELEGIDO
+            DropDownList _DropDownList = (DropDownList)sender;
+            // CAMBIA EL PAGESIZE DEL GRID ASIGNANDO EL ELEGIDO
+            gvFactura.PageSize = int.Parse(_DropDownList.SelectedValue);
+            //cargarUsuarios();
+            gvFactura.DataSource = Session["s_Detalle_Factura"];
+            gvFactura.DataBind();
+        }
+
+        protected void gvFactura_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            if (e.NewPageIndex >= 0)
+            {
+                gvFactura.PageIndex = e.NewPageIndex;
+                //cargarUsuarios();
+                gvFactura.DataSource = Session["s_Detalle_Factura"];
+                gvFactura.DataBind();
+            }
+        }
+        #endregion
+    }
+}

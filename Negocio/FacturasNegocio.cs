@@ -27,7 +27,7 @@ namespace Negocio
         }
 
         /*METODO ENCARGADO DE INSERTAR EL MAESTRO Y EL DETALLE DE LA FACTURA*/
-        public bool NuevaFactura(Entidad.Facturas f, List<Negocio.Datos_Factura_Detalle> p)
+        public bool NuevaFactura(Entidad.Facturas f, List<Negocio.Datos_Factura_Detalle> dfd)
         {
             bool inserto = false;
             try
@@ -36,19 +36,21 @@ namespace Negocio
                 {
                     this.InsertarFactura(f);
                     Negocio.Factura_DetalleNegocio dc = new Factura_DetalleNegocio();
-                    foreach (var item in p)
+                    /*SE RECORRE CADA ELEMENTO DEL DETALLE A FACTURAR*/
+                    foreach (var item in dfd)
                     {
                         Entidad.Factura_Detalle df = new Entidad.Factura_Detalle();
                         df.IdFactura = f.Id;
-                        //df.IdProducto = item.Id;
-                        //df.Cantidad = item.ca
+                        df.IdProducto = item.IdProducto;
+                        df.Cantidad = item.Cantidad;
+                        df.Valor = item.Importe;
+                        df.FechaProceso = f.FechaProceso;
+                        df.UsuarioProceso = f.UsuarioProceso;
                         dc.InsertarDetalle(df);
                     }
-
                     ts.Complete();
-                }
-                
-
+                    inserto = true;
+                }             
             }
             catch (Exception err)
             {

@@ -10,14 +10,14 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
                         <div class="form-group">
                             <label class="control-label">Fecha</label>
-                            <asp:TextBox ID="txtFecha" runat="server" class="form-control" disabled ="disabled" ></asp:TextBox>
+                            <asp:TextBox ID="txtFecha" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
-                            <label class="control-label" for="txtCliente">Cliente</label>                        
+                         <label class="control-label" for="txtCliente">Cliente</label>                        
                     </div>
                     <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 ">                         
                         <asp:TextBox ID="txtCliente" runat="server" class="form-control" placeholder="000"> </asp:TextBox> 
@@ -29,20 +29,22 @@
                         <label class="control-label">Nombre</label>
                     </div>
                     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 "> 
-                        <asp:TextBox ID="txtNombre" runat="server" class="form-control" disabled ="disabled"></asp:TextBox> 
+                        <asp:TextBox ID="txtNombre" runat="server" class="form-control" ReadOnly="true"></asp:TextBox> 
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6"> 
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3"> 
                         <asp:RequiredFieldValidator ID="rfvCliente" runat="server" ErrorMessage="Debe digitar el código del cliente." ControlToValidate="txtCliente" CssClass="alert-danger"></asp:RequiredFieldValidator>                  
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6">
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
                         <asp:RangeValidator ID="rvCliente" runat="server" ErrorMessage="Debe digitar el formato correcto." ControlToValidate="txtCliente" CssClass="alert-danger" MinimumValue="0" MaximumValue="999" Type="Integer"></asp:RangeValidator>
-                    </div>
+                    </div>                    
                 </div>
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="form-group">
-                            <label class="control-label">Producto</label>
+                            <label class="control-label" for="ddlProducto">Producto</label>
                              <asp:DropDownList ID="ddlProducto" runat="server" class="form-control" AppendDataBoundItems="true" ></asp:DropDownList>    
                         </div>
                     </div>
@@ -78,14 +80,18 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <!--OnPageIndexChanging="gvUsuarios_PageIndexChanging" OnRowDataBound="gvUsuarios_RowDataBound" OnRowCommand="gvUsuarios_RowCommand"-->
+                    <%--OnPageIndexChanging="gvFactura_PageIndexChanging" 
+                        OnRowDataBound="gvFactura_RowDataBound" 
+                        OnRowCommand="gvFactura_RowCommand"--%>
                     <asp:GridView ID="gvFactura" runat="server"
                         AutoGenerateColumns="false"
                         CssClass="table table-bordered bs-table"
                         DataKeyNames="UsuarioProceso"
                         Width="100%"
                         PageSize="5"
-                        AllowPaging="true">
+                        AllowPaging="true"
+                        OnPageIndexChanging="gvFactura_PageIndexChanging" 
+                        OnRowDataBound="gvFactura_RowDataBound">
                         <%--Estilos--%>
                         <HeaderStyle BackColor="#001b36" Font-Bold="True" ForeColor="White" />
                         <EditRowStyle BackColor="#ffffcc" />
@@ -98,19 +104,19 @@
                         <PagerTemplate>
                             <div class="col-xs-12 col-lg-7">
                                 <asp:Label ID="Label1" runat="server" Text="Mostrar filas:" />
-
-                                <!--OnSelectedIndexChanged="RegsPag_SelectedIndexChanged" -->
-                                <asp:DropDownList ID="RegsPag" runat="server" AutoPostBack="true"
-                                     Width="40px">
+                                
+                                <!--OnSelectedIndexChanged="RegsPag_SelectedIndexChanged"-->
+                                <asp:DropDownList ID="RegsPag" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RegsPag_SelectedIndexChanged"
+                                      Width="40px">
                                     <asp:ListItem Value="5" />
                                     <asp:ListItem Value="10" />
                                     <asp:ListItem Value="15" />
                                 </asp:DropDownList>
 
                                 <asp:Label ID="Label2" runat="server" Text="Ir a"></asp:Label>
-
-                                <!--OnTextChanged="IraPag"-->
-                                <asp:TextBox ID="IraPag" runat="server" AutoPostBack="true" 
+                                
+                                <%--OnTextChanged="IraPag"--%>
+                                <asp:TextBox ID="IraPag" runat="server" AutoPostBack="true" OnTextChanged="IraPag"
                                     Width="30px" />
 
                                 <asp:Label ID="Label3" runat="server" Text="de" />
@@ -130,21 +136,6 @@
                             </div>
                         </PagerTemplate>
                         <Columns>
-                            <%--botones de acción sobre los registros...--%>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lkbEliminar" Text="ELIMINAR" CommandName="ELIMINAR" CommandArgument='<%# Eval("UsuarioProceso") %>'
-                                        OnClientClick='if(!confirm("¿ESTA SEGURO QUE DESEA ELIMINAR EL REGISTRO?"))return false'
-                                        runat="server" CssClass="btn btn-danger btn-sm" ToolTip="ELIMINAR"><span class="glyphicon glyphicon glyphicon-trash"></span></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lkbEditar" Text="EDITAR" CommandName="EDITAR" CommandArgument='<%# Eval("UsuarioProceso") %>'
-                                        runat="server" CssClass="btn btn-info btn-sm" ToolTip="EDITAR"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
                             <%--campos no editables...--%>
                             <asp:BoundField DataField="Producto" HeaderText="Producto" InsertVisible="False" ReadOnly="True" SortExpression="Producto" ControlStyle-Width="20%" />
                             <%--ControlStyle-Width="70px"--%>
@@ -160,21 +151,21 @@
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Subtotal</label>
-                        <asp:TextBox ID="txtSubTotal" runat="server" class="form-control" placeholder="0" disabled="disabled"></asp:TextBox>                       
+                        <asp:TextBox ID="txtSubTotal" runat="server" class="form-control" placeholder="0" ReadOnly="true"></asp:TextBox>                       
                     </div>
                 </div>
 
                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Impuesto</label>
-                        <asp:TextBox ID="txtImpuesto" runat="server" class="form-control" placeholder="0" disabled="disabled"></asp:TextBox>
+                        <asp:TextBox ID="txtImpuesto" runat="server" class="form-control" placeholder="0" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
 
                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Total</label>
-                        <asp:TextBox ID="txtTotal" runat="server" class="form-control" placeholder="0" disabled="disabled"></asp:TextBox>
+                        <asp:TextBox ID="txtTotal" runat="server" class="form-control" placeholder="0" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>                
             </div>
@@ -183,7 +174,7 @@
                 <div class="row">
                     <div class="text-center">                    
                         <asp:Button ID="btnFacturar" runat="server" Text="Facturar" class="btn btn-success" OnClick="btnFacturar_Click" />  
-                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-danger" />
+                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-danger" OnClick="btnCancelar_Click" CausesValidation="false" />
                     </div>
                 </div>
             </div>
