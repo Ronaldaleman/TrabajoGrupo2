@@ -198,6 +198,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="wfEditaProducto.aspx" />
     <Content Include="wfFormularioGrid.aspx" />
     <Content Include="wfInsertaProducto.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -413,6 +414,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="wfEditaProducto.aspx.cs">
+      <DependentUpon>wfEditaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfEditaProducto.aspx.designer.cs">
+      <DependentUpon>wfEditaProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="wfFormularioBase.aspx.cs">
       <DependentUpon>wfFormularioBase.aspx</DependentUpon>

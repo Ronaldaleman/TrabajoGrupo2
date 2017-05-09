@@ -24,12 +24,21 @@ namespace Datos
             }
         }
 
-        public int EditaProductoDatos(Entidad.Productos producto)
+        public int EditaProductoDatos(Entidad.Productos ProductoEditado)
         {
             try
             {
+                
                 dc = new Entidad.BD_EvaluacionEntities();
-                dc.Productos.Attach(producto);
+                Entidad.Productos ProductoAEditar = dc.Productos.Where(p => p.Id == ProductoEditado.Id).FirstOrDefault();
+                ProductoAEditar.Id = ProductoEditado.Id;
+                ProductoAEditar.Descripcion = ProductoEditado.Descripcion;
+                ProductoAEditar.Existencia = ProductoEditado.Existencia;
+                ProductoAEditar.PrecioUnitario = ProductoEditado.PrecioUnitario;
+                ProductoAEditar.FechaProceso = DateTime.Now;
+                ProductoAEditar.Estado = ProductoEditado.Estado;
+                ProductoAEditar.UsuarioProceso = 0;
+                //dc.Productos.Attach(producto);
                 return dc.SaveChanges();
             }
             catch (Exception excepcion)
@@ -41,8 +50,10 @@ namespace Datos
         public List<Entidad.Productos> RetornaListaProductosDatos()
         {
             dc = new Entidad.BD_EvaluacionEntities();
-            return dc.Productos.ToList();
+            List < Entidad.Productos > l = dc.Productos.ToList();
+            dc.Dispose();
+            return l;
             throw new Exception();
-        }    
+        }
     }
 }
