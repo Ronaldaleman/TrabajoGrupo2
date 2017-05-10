@@ -11,7 +11,16 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["sessionIDUsuario"] != null)
+                {
+                }
+                else
+                {
+                    Response.Redirect("wfLogin.aspx");
+                }
+            }
         }
 
         protected void btnRecuperar_Click(object sender, EventArgs e)
