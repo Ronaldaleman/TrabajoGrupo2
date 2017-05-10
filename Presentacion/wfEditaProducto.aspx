@@ -5,8 +5,12 @@
         <div class="panel-heading">Administración de Productos</div>
         <div class="panel-body">
             <div class="col-lg-12">
-
+                <a href="wfInsertaProducto" class="btn btn-success btn-sm" title="AGREGAR">
+                    <span class="glyphicon glyphicon-plus"></span> AGREGAR PRODUCTO 
+                </a>
+                <%--<asp:Button ID="Button1" runat="server" CssClass="btn btn-success btn-sm" ToolTip="AGREGAR"/><span class="glyphicon glyphicon-plus"></span>--%>
             </div>
+            <br/><br/>
             <div class="col-lg-12">
                 <asp:GridView ID="gvProductos" runat="server"
                     AutoGenerateColumns="false"

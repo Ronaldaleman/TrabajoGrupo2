@@ -158,7 +158,7 @@ namespace Presentacion
                 {
                     /*Codigo para editar*/
                     Session["ObjetoProducto"] = producto;
-                    Response.Redirect("");
+                    Response.Redirect("wfEditaProductoIndividual");
 
                 }
             }

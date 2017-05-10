@@ -45,5 +45,10 @@ namespace Presentacion
                 cvMensaje.Text ="ERROR AL GUARDAR EL PRODUCTO "+producto.Descripcion+": "+excepcion.Message;
             }
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("wfEditaProducto");
+        }
     }
 }
