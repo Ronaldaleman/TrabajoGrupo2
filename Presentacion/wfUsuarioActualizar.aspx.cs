@@ -57,10 +57,18 @@ namespace Presentacion
             usuarios.Clave = txtClave.Text.Trim();
             usuarios.Cedula = txtCedula.Text.Trim().ToUpper();
             Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
-            dc.ActualizarUsuario(usuarios);
-            lblMensaje.Text = "El usuario fue actualizado Exitosamente";
+            Negocio.webServicioNegocio ds = new Negocio.webServicioNegocio();
+            string cedula = ds.ValidaCedula(txtCedula.Text.Trim());
+            if (cedula == "1")
+            {
+                dc.ActualizarUsuario(usuarios);
+                lblMensaje.Text = "El usuario fue actualizado Exitosamente";
+            }
+            else
+            {
+                lblMensaje.Text = "La cédula es incorrecta por favor revisar";
+            }
 
-                       
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
