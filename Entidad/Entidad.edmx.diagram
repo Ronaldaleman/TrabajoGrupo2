@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="14dc071e302b42ddab4957345d2a3573" Name="Diagram1">
-        <EntityTypeShape EntityType="BD_EvaluacionModel.Clientes" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_EvaluacionModel.Empleados" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_EvaluacionModel.Factura_Detalle" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_EvaluacionModel.Facturas" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EvaluacionModel.Facturas" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_EvaluacionModel.Productos" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_EvaluacionModel.Usuarios" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="BD_EvaluacionModel.FK_Facturas_Clientes" ManuallyRouted="false" />
         <AssociationConnector Association="BD_EvaluacionModel.FK_Factura_Detalle_Facturas" ManuallyRouted="false" />
         <AssociationConnector Association="BD_EvaluacionModel.FK_Factura_Detalle_Productos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD_EvaluacionModel.Clientes" Width="1.5" PointX="0.75" PointY="1.25" />
+        <AssociationConnector Association="BD_EvaluacionModel.FK_Facturas_Clientes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -79,6 +79,7 @@
     <Compile Include="Factura_Detalle.cs">
       <DependentUpon>Entidad.tt</DependentUpon>
     </Compile>
+    <Compile Include="Misentidades.cs" />
     <Compile Include="Productos.cs">
       <DependentUpon>Entidad.tt</DependentUpon>
     </Compile>

@@ -61,7 +61,7 @@
                                 <li><a href="#">Sub 3</a></li>
                             </ul>
                         </li>
-                        <li><a runat="server" href=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Cerrar Sesión</a></li>
+                       // <li><a runat="server" href=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>

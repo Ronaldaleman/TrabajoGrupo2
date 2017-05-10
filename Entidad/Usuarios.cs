@@ -20,5 +20,6 @@ namespace Entidad
         public string Clave { get; set; }
         public string Cedula { get; set; }
         public System.DateTime FechaProceso { get; set; }
+        public int Estado { get; set; }
     }
 }
