@@ -24,12 +24,12 @@ namespace Presentacion
             {
                 txtLogin.Text = usuarios.Login;
                 txtNombre.Text = usuarios.Nombre;
-                txtClave.Text = usuarios.Clave;
+                //txtClave.Text = usuarios.Clave;
                 txtCedula.Text = usuarios.Cedula;
-                txtLogin.Enabled = true;
-                txtNombre.Enabled = true;
-                txtClave.Enabled = true;
-                txtCedula.Enabled = true;
+                txtLogin.ReadOnly = false;
+                txtNombre.ReadOnly = false;
+                //txtClave.ReadOnly = false;
+                txtCedula.ReadOnly = false;
                 Session["s_AlumnosAc"] = usuarios;
             }
             else
@@ -44,7 +44,7 @@ namespace Presentacion
             txtLogin.Text = "";
             txtNombre.Text = "";
             txtCedula.Text = "";
-            txtClave.Text = "";
+           // txtClave.Text = "";
             lblMensaje.Text = "";
         }
 
@@ -54,7 +54,7 @@ namespace Presentacion
             usuarios = (Entidad.Usuarios)Session["s_AlumnosAc"];
             usuarios.Login = txtLogin.Text.Trim().ToUpper();
             usuarios.Nombre = txtNombre.Text.Trim().ToUpper();
-            usuarios.Clave = txtClave.Text.Trim();
+           // usuarios.Clave = txtClave.Text.Trim();
             usuarios.Cedula = txtCedula.Text.Trim().ToUpper();
             Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
             Negocio.webServicioNegocio ds = new Negocio.webServicioNegocio();
@@ -74,6 +74,7 @@ namespace Presentacion
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Session.Remove("s_AlumnosAc");
+            Response.Redirect("Default.aspx");
         }
     }
 }
