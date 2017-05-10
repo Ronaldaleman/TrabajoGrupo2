@@ -16,10 +16,9 @@ namespace Presentacion
 
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtNombres.Text = "";
-            txtCedula.Text = "";
-            txtClave.Text = "";
-            txtLogin.Text = "";
+            txtNombres.Text = " ";
+            txtCedula.Text = " ";
+            txtLogin.Text = " ";
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -31,25 +30,35 @@ namespace Presentacion
                 string cedula = ds.ValidaCedula(txtCedula.Text.Trim());
                 if (cedula == "1")
                     {
-                        lblMensaje.Text = "Cedula correcta";
-                    }
-                else
-                    {
-                        lblMensaje.Text = "Cedula Incorrecta";
-                    }
+                        Entidad.Usuarios u = new Entidad.Usuarios();
+                        u.Nombre = txtNombres.Text.Trim();
+                        u.Login = txtLogin.Text.Trim();
+                        u.Clave = "EVALUACION";
+                        u.Cedula = txtCedula.Text.Trim();
+                        u.Estado = 1;
+                        u.FechaProceso = DateTime.Now;
+                        Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
 
-                Entidad.Usuarios u = new Entidad.Usuarios();
-                u.Nombre = txtNombres.Text.Trim();
-                u.Login = txtLogin.Text.Trim();
-                u.Clave = txtClave.Text.Trim();
-                u.Cedula = txtCedula.Text.Trim();
-                u.FechaProceso = DateTime.Now;
-                Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
-                
-                dc.CrearUsuario(u);
-                lblMensaje.Text = "El usuario se ha ingresado correctamente en la BD";
+                        
+                        string rep = dc.CrearUsuario(u);
+                        if (rep == "1")
+                            {
+                                lblMensaje.Text = "El usuario se ha ingresado correctamente en la BD";
+                            }
+                       else
+                            {
+                                 lblMensaje.Text = "El usuario existe en la base de datos";
+                            }
+
+                 }
+                else
+                {
+                    lblMensaje.Text = "La cédula es incorrecta por favor revisar";
+                }
+
             }
             catch (Exception err)
+
             {
 
                 cvDatos.IsValid = false;

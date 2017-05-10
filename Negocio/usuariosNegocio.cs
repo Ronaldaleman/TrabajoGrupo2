@@ -9,6 +9,9 @@ namespace Negocio
 {
     public class usuariosNegocio
     {
+        /// <summary>
+        /// Método para mandar a insertar el usuarios  en la tabla
+        /// </summary>
         public string CrearUsuario(Entidad.Usuarios user)
         {
             string resp = "";
@@ -19,7 +22,7 @@ namespace Negocio
                 
                 if (userBD == null)
                 {
-                    user.Clave = CreateMD5(user.Clave);
+                   // user.Clave = CreateMD5(user.Clave);
                     dc.Insertar(user);
                     resp = "1";
 
@@ -37,20 +40,77 @@ namespace Negocio
                 throw (err);
             }
         }
-        protected static string CreateMD5(string input)
-        {
-            // Use input string to calculate MD5 hash
-            MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-            byte[] hashBytes = md5.ComputeHash(inputBytes);
 
-            // Convert the byte array to hexadecimal string
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hashBytes.Length; i++)
+
+        /// <summary>
+        /// Método para mandar a dar de baja al usuarios  en la tabla
+        /// </summary>
+        public string DarBajaUsuario(int coduser)
+        {
+            string resp = "";
+            try
             {
-                sb.Append(hashBytes[i].ToString("x2"));
+                Datos.usuariosDatos dc = new Datos.usuariosDatos();
+                Entidad.Usuarios userBD = dc.GetCodUsuario(coduser);
+
+                if (userBD != null)
+                {
+                    // user.Clave = CreateMD5(user.Clave);
+                    dc.BajaUsuario(userBD);
+                    resp = "1";
+
+                }
+                else
+                {
+                    resp = "2";
+                }
+                return resp;
+
             }
-            return sb.ToString();
+            catch (Exception err)
+            {
+
+                throw (err);
+            }
+        }
+
+        /// <summary>
+        /// Método para mandar a consultar el usuarios  en la tabla
+        /// </summary>
+        public Entidad.Usuarios ConsultarUsuario(int codusu)
+        {
+            try
+            {
+                Datos.usuariosDatos dc = new Datos.usuariosDatos();
+                return dc.GetCodUsuario(codusu);
+            }
+            catch (Exception err)
+            {
+
+                throw (err);
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Método para mandar a actualizar el usuarios  en la tabla
+        /// </summary>
+        public void ActualizarUsuario(Entidad.Usuarios alumno)
+        {
+
+            try
+            {
+                Datos.usuariosDatos dc = new Datos.usuariosDatos();
+                dc.UpdateUsuario(alumno);
+
+            }
+            catch (Exception err)
+            {
+
+                throw (err);
+            }
         }
 
     }

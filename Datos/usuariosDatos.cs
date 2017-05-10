@@ -8,6 +8,10 @@ namespace Datos
 {
     public class usuariosDatos
     {
+        /// <summary>
+        /// Método para insertar los usuarios  en la tabla
+        /// </summary>
+      
         public void Insertar(Entidad.Usuarios a)
         {
             Entidad.BD_EvaluacionEntities dc = null;
@@ -23,15 +27,19 @@ namespace Datos
                 throw err;
             }
         }
-
+        /// <summary>
+        /// Método para actualizar los usuarios  en la tabla
+        /// </summary>
         public void UpdateUsuario(Entidad.Usuarios a)
         {
-            Entidad.Usuarios usr = null;
+         
             Entidad.BD_EvaluacionEntities dc = null;
             try
             {
                 dc = new Entidad.BD_EvaluacionEntities();
-                usr = dc.Usuarios.Where(c => c.Usuarios1 == a.Usuarios1).FirstOrDefault();
+                Entidad.Usuarios usr = dc.Usuarios.Where(aBD => aBD.Usuarios1 == a.Usuarios1).FirstOrDefault();
+
+                
                 if (usr != null)
                 {
                     usr.Login = a.Login;
@@ -39,6 +47,7 @@ namespace Datos
                     usr.Clave = a.Clave;
                     usr.FechaProceso = a.FechaProceso;
                     usr.Cedula = a.Cedula;
+                    usr.Estado = 1;
                     dc.SaveChanges();
                 }
             }
@@ -53,7 +62,9 @@ namespace Datos
                     dc.Dispose();
             }
         }
-
+        /// <summary>
+        /// Método para dar de baja a los usuarios  en la tabla
+        /// </summary>
         public void BajaUsuario(Entidad.Usuarios a)
         {
             Entidad.Usuarios usr = null;
@@ -80,7 +91,9 @@ namespace Datos
                     dc.Dispose();
             }
         }
-
+        /// <summary>
+        /// Método para obtener el usuario al enviar el codigo del usuario
+        /// </summary>
         public Entidad.Usuarios GetUsuario(string userLogin)
         {
             Entidad.BD_EvaluacionEntities dc = null;
@@ -97,5 +110,24 @@ namespace Datos
                 throw (err);
             }
         }
+
+        public Entidad.Usuarios GetCodUsuario(int codUser)
+        {
+            Entidad.BD_EvaluacionEntities dc = null;
+            Entidad.Usuarios user = null;
+            try
+            {
+                dc = new Entidad.BD_EvaluacionEntities();
+                user = dc.Usuarios.Where(u => u.Usuarios1 == codUser).FirstOrDefault();
+                return user;
+            }
+            catch (Exception err)
+            {
+
+                throw (err);
+            }
+        }
+
+       
     }
 }
