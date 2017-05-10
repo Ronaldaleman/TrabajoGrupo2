@@ -9,32 +9,27 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Código Usuario</label>
-                       <asp:RequiredFieldValidator ID="rqvCodigo" runat="server" ErrorMessage="Datos requeridos"  ForeColor="Red" ControlToValidate="txtCodigo" Text="*" ></asp:RequiredFieldValidator>
+                       <asp:RequiredFieldValidator ID="rqvCodigo" runat="server" ErrorMessage="Datos requeridos"  ForeColor="Red" ControlToValidate="txtCodigo" Text="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtCodigo" runat="server" class="form-control" placeholder="Código de Usuario" Width="152px"  ></asp:TextBox>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Nombre del Usuario</label>
-                        <asp:TextBox ID="txtNombre" runat="server" class="form-control" placeholder="Nombre de Usuario" Enabled="false"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" runat="server" class="form-control" placeholder="Nombre de Usuario"  ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
                  <div class="col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Login</label>
-                        <asp:TextBox ID="txtLogin" runat="server" class="form-control" placeholder="Login" Enabled="false" ></asp:TextBox>
+                        <asp:TextBox ID="txtLogin" runat="server" class="form-control" placeholder="Login" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                        <label class="control-label">Clave</label>
-                        <asp:TextBox ID="txtClave" runat="server" class="form-control" placeholder="Login" Enabled="false" ></asp:TextBox>
-                    </div>
-                </div>
+                 
                   <div class="col-lg-3">
                     <div class="form-group">
                         <label class="control-label">Cédula</label>
-                        <asp:TextBox ID="txtCedula" runat="server" class="form-control" placeholder="Login" Enabled="false" ></asp:TextBox>
+                        <asp:TextBox ID="txtCedula" runat="server" class="form-control" placeholder="Login"  ReadOnly="true" ></asp:TextBox>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -52,7 +47,7 @@
                 <div class="form-group">
                     <asp:Button ID="btnRecuperar" runat="server" Text="Recuperar" class="btn btn-info" OnClick="btnRecuperar_Click"    />
                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar"  class="btn btn-info" OnClick="btnLimpiar_Click" />
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar"   CssClass="btn btn-success" OnClick="btnGuardar_Click" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar"   CssClass="btn btn-success" OnClick="btnGuardar_Click" ValidationGroup="validar"/>
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="btnCancelar_Click" />
                    
                 </div>

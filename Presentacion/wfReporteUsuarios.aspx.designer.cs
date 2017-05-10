@@ -10,24 +10,24 @@
 namespace Presentacion {
     
     
-    public partial class SiteMaster {
+    public partial class wfReporteUsuarios {
         
         /// <summary>
-        /// Control lkSalir.
+        /// Control rptUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lkSalir;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rptUsuario;
         
         /// <summary>
-        /// Control MainContent.
+        /// Control cvError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.CustomValidator cvError;
     }
 }
