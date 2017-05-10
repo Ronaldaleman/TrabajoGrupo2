@@ -437,10 +437,6 @@
     <Compile Include="wfUsuarioActualizar.aspx.designer.cs">
       <DependentUpon>wfUsuarioActualizar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="wfUsuarioAdd.aspx.cs">
-      <DependentUpon>wfUsuarioAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="wfLogin.aspx.cs">
       <DependentUpon>wfLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -454,6 +450,13 @@
     </Compile>
     <Compile Include="wfReporteUsuarios.aspx.designer.cs">
       <DependentUpon>wfReporteUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wfUsuarioAdd.aspx.cs">
+      <DependentUpon>wfUsuarioAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfUsuarioAdd.aspx.designer.cs">
+      <DependentUpon>wfUsuarioAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="wfUsuarioBaja.aspx.cs">
       <DependentUpon>wfUsuarioBaja.aspx</DependentUpon>

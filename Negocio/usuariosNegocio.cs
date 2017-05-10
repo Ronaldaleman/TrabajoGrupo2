@@ -50,11 +50,47 @@ namespace Negocio
         public string CreateMD5(string input)
 
         {
+            // Use input string to calculate MD5 hash
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+            // Convert the byte array to hexadecimal string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hashBytes.Length; i++)
+            {
+                sb.Append(hashBytes[i].ToString("x2"));
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Método para mandar a consultar el usuarios  en la tabla
+        /// </summary>
+        public Entidad.Usuarios ConsultarUsuario(int codusu)
+        {
+            try
+            {
+                Datos.usuariosDatos dc = new Datos.usuariosDatos();
+                return dc.GetCodUsuario(codusu);
+            }
+            catch (Exception err)
+            {
+
+                throw (err);
+            }
+        }
+
+        /// <summary>
+        /// Método para mandar a dar de baja al usuarios  en la tabla
+        /// </summary>
+        public string DarBajaUsuario(int coduser)
+        {
             string resp = "";
             try
             {
                 Datos.usuariosDatos dc = new Datos.usuariosDatos();
-                Entidad.Usuarios userBD = dc.GetCodUsuario(int.Parse(input));
+                Entidad.Usuarios userBD = dc.GetCodUsuario(coduser);
 
                 if (userBD != null)
                 {
@@ -76,25 +112,6 @@ namespace Negocio
                 throw (err);
             }
         }
-
-        /// <summary>
-        /// Método para mandar a consultar el usuarios  en la tabla
-        /// </summary>
-        public Entidad.Usuarios ConsultarUsuario(int codusu)
-        {
-            try
-            {
-                Datos.usuariosDatos dc = new Datos.usuariosDatos();
-                return dc.GetCodUsuario(codusu);
-            }
-            catch (Exception err)
-            {
-
-                throw (err);
-            }
-        }
-
-
 
 
         /// <summary>

@@ -29,6 +29,11 @@ namespace Presentacion
                     dc.actualizarUsuario(usuario);
                     Response.Redirect("wfLogin.aspx");
                 }
+                else
+                {
+                    cvError.IsValid = false;
+                    cvError.Text = "Claves no son iguales";
+                }
             }
             catch (Exception err)
             {

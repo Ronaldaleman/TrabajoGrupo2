@@ -264,7 +264,7 @@
                             <TextRun>
                               <Value>=Fields!FechaProceso.Value</Value>
                               <Style>
-                                <Format>dd/mm/YYYY</Format>
+                                <Format>dd/mm/yyyy</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -283,6 +283,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -311,7 +312,7 @@
         <Top>0.93416cm</Top>
         <Left>0.7112cm</Left>
         <Height>1.2cm</Height>
-        <Width>15.15938cm</Width>
+        <Width>15.15936cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -333,7 +334,6 @@
           <Source>Embedded</Source>
           <Value>LogotipoUCA</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0cm</Top>
           <Height>1.87042cm</Height>
           <Width>2.92875cm</Width>
           <Style>
