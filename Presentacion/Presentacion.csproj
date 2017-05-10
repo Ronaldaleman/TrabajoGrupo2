@@ -56,12 +56,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -181,12 +181,18 @@
     <Content Include="Content\Site.css" />
     <Content Include="Account\Web.config" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\LogotipoUCA.ico" />
+    <Content Include="images\LogotipoUCA.png" />
+    <Content Include="images\rompecabezas_hrcenter.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="wfCambioClave.aspx" />
     <Content Include="wfFormularioGrid.aspx" />
     <Content Include="wfUsuarioActualizar.aspx" />
     <Content Include="wfUsuarioAdd.aspx" />
     <Content Include="wfUsuarioBaja.aspx" />
+    <Content Include="wfLogin.aspx" />
+    <Content Include="wfReporteUsuarios.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -403,6 +409,13 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="wfCambioClave.aspx.cs">
+      <DependentUpon>wfCambioClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfCambioClave.aspx.designer.cs">
+      <DependentUpon>wfCambioClave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="wfFormularioBase.aspx.cs">
       <DependentUpon>wfFormularioBase.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -428,8 +441,19 @@
       <DependentUpon>wfUsuarioAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="wfUsuarioAdd.aspx.designer.cs">
-      <DependentUpon>wfUsuarioAdd.aspx</DependentUpon>
+    <Compile Include="wfLogin.aspx.cs">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfLogin.aspx.designer.cs">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wfReporteUsuarios.aspx.cs">
+      <DependentUpon>wfReporteUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfReporteUsuarios.aspx.designer.cs">
+      <DependentUpon>wfReporteUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="wfUsuarioBaja.aspx.cs">
       <DependentUpon>wfUsuarioBaja.aspx</DependentUpon>
@@ -455,6 +479,9 @@
       <Project>{6d6f466d-866a-4146-95e8-994185568c49}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="rptUsuarios.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

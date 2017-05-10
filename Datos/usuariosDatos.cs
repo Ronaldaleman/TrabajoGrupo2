@@ -106,10 +106,28 @@ namespace Datos
             }
             catch (Exception err)
             {
-
                 throw (err);
             }
         }
+
+        /// <summary>
+        /// Método que genera una lista completa de los usuarios registrados en la tabla
+        /// </summary>
+        /// <returns>Lista de usuarios</returns>
+        public List<Entidad.Usuarios> listUsuario()
+        {
+            Entidad.BD_EvaluacionEntities dc = null;
+            try
+            {
+                dc = new Entidad.BD_EvaluacionEntities();
+                return dc.Usuarios.ToList();
+            }
+            catch (Exception err)
+            {
+                throw (err);
+            }
+        }
+
 
         public Entidad.Usuarios GetCodUsuario(int codUser)
         {
@@ -129,5 +147,6 @@ namespace Datos
         }
 
        
+
     }
 }

@@ -76,6 +76,19 @@ namespace Presentacion
         {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
+
+        protected void lkSalir_Click(object sender, EventArgs e)
+        {
+            if (Session["sessionIDUsuario"] != null)
+            {
+                Session.RemoveAll();
+                Response.Redirect("wfLogin.aspx");
+            }
+            else
+            {
+                Response.Redirect("wfLogin.aspx");
+            }
+        }
     }
 
 }

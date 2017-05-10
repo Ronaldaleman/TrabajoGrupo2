@@ -9,6 +9,8 @@ namespace Presentacion
 {
     public partial class wfUsuarioAdd : System.Web.UI.Page
     {
+     
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -66,5 +68,7 @@ namespace Presentacion
             }
 
         }
+
+       
     }
 }
