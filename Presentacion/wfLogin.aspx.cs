@@ -17,7 +17,7 @@ namespace Presentacion
         protected void txtEntrar_Click(object sender, EventArgs e)
         {
             string login = txtLogin.Text.ToUpper().Trim(), password = txtPassword.Text.ToUpper().Trim();
-            Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
+            Negocio.UsuarioNegocio dc = new Negocio.UsuarioNegocio();
             try
             {
                 int existeUsuario = dc.existeUsuario(login);
@@ -43,10 +43,10 @@ namespace Presentacion
             catch (Exception err)
             {
                 cvError.IsValid = false;
-                cvError.Text = "Ocurrio un error, favor verifique";
+                cvError.Text = "Ocurrio un error, favor verifique*** ERR:" + err.Message;
             }
-            
-            
+
+
         }
 
         public void evaluaDatos(string password, string login)
@@ -70,16 +70,26 @@ namespace Presentacion
                 }
                 else
                 {
-                    Session.Add("sessionIDUsuario", dc.devolverID(login));
-                    Response.Redirect("wfCambioClave.aspx");
+                    if (dc.validaDatos(login, password) == 1)
+                    {
+                        Session.Add("sessionIDUsuario", dc.devolverID(login));
+                        Response.Redirect("wfCambioClave.aspx");
+                    }
+                    else
+                    {
+                        lblMensaje.Text = "Usuario o contraseña incorrectos";
+                    }
                 }
+
+
             }
             catch (Exception err)
             {
                 cvError.IsValid = false;
-                cvError.Text = "Ocurrio un error, favor verifique";
+                cvError.Text = "Ocurrio un error, favor verifique*** ERR:" + err.Message;
             }
-           
+
         }
     }
+}
 }

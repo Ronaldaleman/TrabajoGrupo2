@@ -103,13 +103,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCantidad;
         
         /// <summary>
-        /// Control RangeValidator1.
+        /// Control rvCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        protected global::System.Web.UI.WebControls.RangeValidator rvCantidad;
         
         /// <summary>
         /// Control btnAgregar.
