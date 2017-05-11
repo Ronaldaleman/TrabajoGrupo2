@@ -17,7 +17,7 @@ namespace Presentacion
         protected void txtEntrar_Click(object sender, EventArgs e)
         {
             string login = txtLogin.Text.ToUpper().Trim(), password = txtPassword.Text.ToUpper().Trim();
-            Negocio.UsuarioNegocio dc = new Negocio.UsuarioNegocio();
+            Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
             try
             {
                 int existeUsuario = dc.existeUsuario(login);
@@ -91,5 +91,5 @@ namespace Presentacion
 
         }
     }
-}
+
 }
