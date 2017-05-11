@@ -37,7 +37,7 @@
                         <asp:RequiredFieldValidator ID="rfvCliente" runat="server" ErrorMessage="Debe digitar el código del cliente." ControlToValidate="txtCliente" CssClass="alert-danger"></asp:RequiredFieldValidator>                  
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                        <asp:RangeValidator ID="rvCliente" runat="server" ErrorMessage="Debe digitar el formato correcto." ControlToValidate="txtCliente" CssClass="alert-danger" MinimumValue="0" MaximumValue="999" Type="Integer"></asp:RangeValidator>
+                        <asp:RangeValidator ID="rvCliente" runat="server" ErrorMessage="Debe digitar el formato correcto." ControlToValidate="txtCliente" CssClass="alert-danger" MinimumValue="1" MaximumValue="999" Type="Integer"></asp:RangeValidator>
                     </div>                    
                 </div>
 
@@ -48,6 +48,7 @@
                              <asp:DropDownList ID="ddlProducto" runat="server" class="form-control" AppendDataBoundItems="true" ></asp:DropDownList>    
                         </div>
                     </div>
+                    <br />
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <asp:RequiredFieldValidator ID="rfvProducto" runat="server" InitialValue="0" ErrorMessage="Debe seleccionar el producto." ControlToValidate="ddlProducto" CssClass="alert-danger"></asp:RequiredFieldValidator>
                     </div>
@@ -60,11 +61,12 @@
                             <asp:TextBox ID="txtCantidad" runat="server" class="form-control" placeholder="0"></asp:TextBox>                            
                         </div>
                     </div>
+                    <br />
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <asp:RequiredFieldValidator ID="rfvCantidad" runat="server" ErrorMessage="Debe digitar la cantidad del producto." ControlToValidate="txtCantidad" CssClass="alert-danger"></asp:RequiredFieldValidator>
                     </div>    
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> 
-                        <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Debe digitar el formato correcto." ControlToValidate="txtCantidad" CssClass="alert-danger" MinimumValue="0" MaximumValue="999" Type="Integer"></asp:RangeValidator>
+                        <asp:RangeValidator ID="rvCantidad" runat="server" ErrorMessage="Debe digitar el formato correcto." ControlToValidate="txtCantidad" CssClass="alert-danger" MinimumValue="1" MaximumValue="999" Type="Integer"></asp:RangeValidator>
                     </div>                       
                 </div>
 
@@ -80,9 +82,6 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <%--OnPageIndexChanging="gvFactura_PageIndexChanging" 
-                        OnRowDataBound="gvFactura_RowDataBound" 
-                        OnRowCommand="gvFactura_RowCommand"--%>
                     <asp:GridView ID="gvFactura" runat="server"
                         AutoGenerateColumns="false"
                         CssClass="table table-bordered bs-table"
@@ -105,7 +104,6 @@
                             <div class="col-xs-12 col-lg-7">
                                 <asp:Label ID="Label1" runat="server" Text="Mostrar filas:" />
                                 
-                                <!--OnSelectedIndexChanged="RegsPag_SelectedIndexChanged"-->
                                 <asp:DropDownList ID="RegsPag" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RegsPag_SelectedIndexChanged"
                                       Width="40px">
                                     <asp:ListItem Value="5" />
@@ -115,7 +113,6 @@
 
                                 <asp:Label ID="Label2" runat="server" Text="Ir a"></asp:Label>
                                 
-                                <%--OnTextChanged="IraPag"--%>
                                 <asp:TextBox ID="IraPag" runat="server" AutoPostBack="true" OnTextChanged="IraPag"
                                     Width="30px" />
 

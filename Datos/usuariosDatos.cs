@@ -120,7 +120,9 @@ namespace Datos
             try
             {
                 dc = new Entidad.BD_EvaluacionEntities();
-                return dc.Usuarios.ToList();
+                List<Entidad.Usuarios> usersBD = new List<Entidad.Usuarios>();
+                usersBD = dc.Usuarios.ToList();
+                return usersBD;
             }
             catch (Exception err)
             {
