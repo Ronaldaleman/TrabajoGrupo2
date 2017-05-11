@@ -14,10 +14,17 @@ namespace Presentacion
         {
             if (!IsPostBack)
             {
-                /*SE OBTIENE LA FECHA ACTUAL*/
-                ObtenerFecha();
-                /*SE CARGA LA LISTA DE LOS PRODUCTOS*/
-                CargarProductos();
+                if (Session["sessionIDUsuario"] != null)
+                {
+                    /*SE OBTIENE LA FECHA ACTUAL*/
+                    ObtenerFecha();
+                    /*SE CARGA LA LISTA DE LOS PRODUCTOS*/
+                    CargarProductos();
+                }
+                else
+                {
+                    Response.Redirect("wfLogin.aspx");
+                }
             }
         }
         public void ObtenerFecha()
@@ -26,8 +33,6 @@ namespace Presentacion
             today = DateTime.Now.ToShortDateString();
             txtFecha.Text = today;
         }
-
-
 
         /*EVENTO ENCARGADO DE REALIZAR LA BUSQUEDA DEL CLIENTE*/
         protected void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -65,28 +70,30 @@ namespace Presentacion
             try
             {
                 Negocio.ProductosNegocio pn = new Negocio.ProductosNegocio();
-                Entidad.Productos pro = new Entidad.Productos();
-                //List<Entidad.Factura_Detalle> fd = new List<Entidad.Factura_Detalle>();
-               
+                Entidad.Productos pro = new Entidad.Productos();               
                 /*SE OBTIENEN LOS DATOS DEL PRODUCTO PARA ASI SABER SU PRECIO Y EXISTENCIA*/
                 pro = pn.DatosProducto(int.Parse(ddlProducto.SelectedValue));
                 /*VERIFICAMOS SI HAY PRODUCTO EN EXISTENCIA*/
-                if (pro.Existencia == 0)
+                if (int.Parse(txtCantidad.Text) > pro.Existencia)
                 {
                     cvDatos.IsValid = false;
                     cvDatos.CssClass = "alert-danger";
-                    cvDatos.ErrorMessage = "No se puede despachar el producto porque no hay en existencia";
+                    cvDatos.ErrorMessage = "No se puede despachar el producto " + ddlProducto.SelectedItem.ToString() + " porque no hay en existencia";
                 } /*CIERRE IF EXISTENCIA*/
                 else
                 {
                     /*SE CREO UNA CLASE DEDICADA A ALMACENAR LOS DATOS DEL GRID*/
                     Negocio.Datos_Factura_Detalle df = new Negocio.Datos_Factura_Detalle();
                     List<Negocio.Datos_Factura_Detalle> dfd = new List<Negocio.Datos_Factura_Detalle>();
-
                     /*SI LA VARIABLE SESSION NO ESTA VACIA*/
                     if (Session["s_Detalle_Factura"] != null)
                     {
                         dfd = (List<Negocio.Datos_Factura_Detalle>)Session["s_Detalle_Factura"];
+                    }
+                    decimal SumaImporte = 0;
+                    /*SI EL PRODUCTO NO EXISTE LO AGREGAMOS AL GRID*/
+                    if (!ExisteProducto(int.Parse(ddlProducto.SelectedValue)))
+                    {
                         df.IdProducto = int.Parse(ddlProducto.SelectedValue.ToString());
                         df.Producto = ddlProducto.SelectedItem.ToString();
                         df.Cantidad = int.Parse(txtCantidad.Text);
@@ -96,31 +103,19 @@ namespace Presentacion
                         Session.Add("s_Detalle_Factura", dfd);
                         gvFactura.DataSource = dfd;
                         gvFactura.DataBind();
-                        /*SE RECORRE LA LISTA DE REGISTRO EN EL GRID PARA OBTENER EL IMPORTE*/
-                        decimal SumaImporte = 0;
-                        foreach (var item in dfd)
-                        {            
-                            df.Cantidad = int.Parse(txtCantidad.Text);
-                            df.PrecioUnitario = pro.PrecioUnitario;
-                            df.Importe = (df.Cantidad * df.PrecioUnitario);
-                            SumaImporte += Convert.ToInt32(item.Importe);  //aqui recorre las celdas y las va sumando
-                            txtSubTotal.Text = SumaImporte.ToString();
-                        } /*CIERRE FOREACH*/
-                    }/*CIERRE DEL IF SI LA SESION O GRID NO ESTA VACIO*/
+                    }
                     else
                     {
-                        df.IdProducto = int.Parse(ddlProducto.SelectedValue.ToString());
-                        df.Producto = ddlProducto.SelectedItem.ToString();
-                        df.Cantidad = int.Parse(txtCantidad.Text);
-                        df.PrecioUnitario = pro.PrecioUnitario;
-                        df.Importe = (df.Cantidad * df.PrecioUnitario);                        
-                        txtSubTotal.Text = df.Importe.ToString();
-                        dfd.Add(df);
-                        Session.Add("s_Detalle_Factura", dfd);
-                        gvFactura.DataSource = dfd;
-                        gvFactura.DataBind();
-                    } /*CIERRE ELSE SI ES LA PRIMERA FILA A AGREGAR AL GRID*/                                   
-                    /*CALCULAMOS EL IMPUESTO DE LA FACTURA*/
+                        cvDatos.IsValid = false;
+                        cvDatos.CssClass = "alert-danger";
+                        cvDatos.ErrorMessage = "No se puede agregar el producto " + ddlProducto.SelectedItem.ToString() + " porque ya esta en la lista.";
+                    }
+                    /*CICLO ENCARGADO DE SUMAR LOS IMPORTES DE LOS PRODUCTOS DEL GRID*/
+                    foreach (var item in dfd)
+                    {   
+                        SumaImporte += Convert.ToInt32(item.Importe);  //aqui recorre las celdas y las va sumando                                                    
+                    } /*CIERRE FOREACH*/
+                    txtSubTotal.Text = SumaImporte.ToString();
                     decimal Impuesto = 0;
                     Impuesto = (decimal.Parse(txtSubTotal.Text) * 15) / 100;
                     txtImpuesto.Text = Impuesto.ToString();
@@ -136,6 +131,25 @@ namespace Presentacion
                 cvDatos.CssClass = "alert-danger";
                 cvDatos.ErrorMessage = err.Message;
             }
+        }
+
+        /*METODO ENCARGADO DE VERIFICAR LA EXISTENCIA DEL PRODUCTO EN EL GRID*/
+        protected bool ExisteProducto(int codProducto)
+        {
+            bool existe = false;
+            if (Session["s_Detalle_Factura"] != null)
+            {
+                List<Negocio.Datos_Factura_Detalle> datosFactura = (List<Negocio.Datos_Factura_Detalle>)Session["s_Detalle_Factura"];
+                foreach (var item in datosFactura)
+                {
+                    if (item.IdProducto == codProducto)
+                    {
+                        existe = true;
+                        break;
+                    }
+                }
+            }
+            return existe;
         }
 
         /*METODO ENCARGADO DE LLENAR LA LISTA DE LOS PRODUCTOS A FACTURAR*/
