@@ -58,6 +58,12 @@
                                 <li><a href="wfUsuarioBaja.aspx">Dar de Baja a Usuario</a></li>
                             </ul>
                         </li>
+                         <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="wfEditaProducto.aspx">Catálogo productos</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Factura<span class="caret"></span></a>
                             <ul class="dropdown-menu">
