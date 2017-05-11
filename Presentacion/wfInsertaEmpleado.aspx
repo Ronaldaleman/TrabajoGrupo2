@@ -48,6 +48,7 @@
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-success" OnClick="btnGuardar_Click"/>
                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" class="btn btn-info" CausesValidation ="false"/>
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="btnCancelar_Click" CausesValidation="false" />
+                    <asp:Button ID="btnReporte" runat="server" Text="Reporte" class="btn btn-primary" CausesValidation="false" OnClick="btnReporte_Click" />
                 </div>
             </div>
         </div>

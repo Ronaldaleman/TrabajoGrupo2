@@ -50,5 +50,10 @@ namespace Presentacion
         {
             Response.Redirect("Default.aspx");
         }
+
+        protected void btnReporte_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("wfReporteEmpleado.aspx");
+        }
     }
 }
