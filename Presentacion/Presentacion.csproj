@@ -175,7 +175,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="BajadeCliente.aspx" />
+    <Content Include="BajaCliente.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -184,6 +184,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Account\Web.config" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ModificarCliente.aspx" />
     <Content Include="ProyectoGrupo2.sln" />
     <Content Include="RegistrarClientes.aspx" />
     <Content Include="ReporteClientes.aspx" />
@@ -371,12 +372,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="BajadeCliente.aspx.cs">
-      <DependentUpon>BajadeCliente.aspx</DependentUpon>
+    <Compile Include="BajaCliente.aspx.cs">
+      <DependentUpon>BajaCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BajadeCliente.aspx.designer.cs">
-      <DependentUpon>BajadeCliente.aspx</DependentUpon>
+    <Compile Include="BajaCliente.aspx.designer.cs">
+      <DependentUpon>BajaCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -396,6 +397,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ModificarCliente.aspx.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarCliente.aspx.designer.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrarClientes.aspx.cs">
       <DependentUpon>RegistrarClientes.aspx</DependentUpon>

@@ -81,6 +81,10 @@ namespace Datos
             }
         }
 
+        //public void BajaCliente()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public Entidad.Clientes ConsultarCliente(int CodCliente)
         {
@@ -104,6 +108,40 @@ namespace Datos
 
         }
 
+
+        public void BajaCliente(Entidad.Clientes a)
+        {
+            Entidad.BD_EvaluacionEntities dc = null;
+
+            try
+            {
+                dc = new Entidad.BD_EvaluacionEntities();
+                Entidad.Clientes cl = dc.Clientes.Where(aBD => aBD.Id == a.Id).FirstOrDefault();
+
+
+                if (cl != null)
+                {
+                    //cl.Nombre = a.Nombre;
+                    //cl.FechaProceso = a.FechaProceso;
+                    //cl.UsuarioProceso = a.UsuarioProceso;
+                    cl.Estado = a.Estado;
+                    dc.SaveChanges();
+                }
+
+            }
+            catch (Exception err)
+            {
+
+                throw new Exception("Error al ejecutar Baja del Clientes////Detalle: " + err.Message);
+
+            }
+            finally
+            {
+                if (dc != null)
+                    dc.Dispose();
+            }
+
+        }
 
     }
 }

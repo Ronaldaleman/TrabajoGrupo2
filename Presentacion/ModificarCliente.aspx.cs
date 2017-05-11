@@ -63,7 +63,7 @@ namespace Presentacion
             }
             catch (Exception err)
             {
-                throw;
+                throw err;
             }
         }
 
@@ -76,6 +76,11 @@ namespace Presentacion
             txtDireccion.Text = "";
             lblMessage.Text = "";
 
+        }
+
+        protected void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }

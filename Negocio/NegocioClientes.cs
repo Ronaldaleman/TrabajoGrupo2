@@ -48,7 +48,6 @@ namespace Negocio
             }
             catch (Exception err)
             {
-
                 throw (err);
             }
 
@@ -70,9 +69,19 @@ namespace Negocio
         }
 
 
+        public void BajaCliente(Entidad.Clientes clientes)
+        {
+            try
+            {
+                Datos.DatosClientes dc = new Datos.DatosClientes();
+                dc.BajaCliente(clientes);
+            }
+            catch (Exception err)
+            {
+                throw (err);
+            }
 
-
-
+        }
 
     }
 }

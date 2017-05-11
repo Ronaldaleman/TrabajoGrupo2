@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <asp:Button ID="txtEntrar" runat="server" Text="Guardar" class="btn btn-danger" OnClick="txtEntrar_Click" BackColor="Lime" BorderColor="Lime" />
                     <asp:Button ID="Btn_Limpiar" runat="server" Text="Limpiar" class="btn btn-info" OnClick="Btn_Limpiar_Click"  />
-                    <asp:Button ID="Button2" runat="server" Text="Cancelar" class="btn btn-default" />
+                    <asp:Button ID="Btn_Cancelar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="Btn_Cancelar_Click" />
                     <asp:CustomValidator ID="cvDatos" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
                 </div>
             </div>

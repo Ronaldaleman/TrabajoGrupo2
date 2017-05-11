@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Presentacion
 {
-    public partial class wfFormularioBase : System.Web.UI.Page
+    public partial class BajaCliente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +25,8 @@ namespace Presentacion
                 {
 
                     txt_Nombres.Text = clientes.Nombre;
+
+
 
                 }
 
@@ -55,17 +57,34 @@ namespace Presentacion
                 customer.UsuarioProceso = 1;
                 customer.Estado = 2;
                 Negocio.NegocioClientes dc = new Negocio.NegocioClientes();
-                dc.ActualizarClientes(customer);
+                dc.BajaCliente(customer);
+                customer.Estado = 1;
                 lblMessage.Text = "El usuario fue actualizado Exitosamente";
             }
             catch (Exception err)
             {
 
-                throw err;
+                cvDatos.IsValid = false;
+                cvDatos.ErrorMessage = err.Message;
             }
-            
-        }
-                
 
-    }   
+        }
+
+
+
+        protected void btnLimpiar(object sender, EventArgs e)
+        {
+            txt_Id.Text = "";
+            txt_Nombres.Text = "";
+
+        }
+
+        protected void btn_Cancelar(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        
+
+    }
 }

@@ -10,7 +10,7 @@
 namespace Presentacion {
     
     
-    public partial class wfFormularioBase {
+    public partial class BajaCliente {
         
         /// <summary>
         /// Control txt_Id.
@@ -49,22 +49,22 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Button btn_Recuperar;
         
         /// <summary>
-        /// Control Button1.
+        /// Control btn_Limpiar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btn_Limpiar;
         
         /// <summary>
-        /// Control Button2.
+        /// Control btnCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
         /// Control lblMessage.
@@ -74,5 +74,14 @@ namespace Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
+        
+        /// <summary>
+        /// Control cvDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvDatos;
     }
 }

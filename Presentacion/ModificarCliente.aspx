@@ -45,7 +45,7 @@
                     <asp:Button ID="btn_Actualizar" runat="server" Text="Actuaizar" class="btn btn_Actualzar" BackColor="Lime" BorderColor="Lime" OnClick="btn_Actualizar_Click" />
                     <asp:Button ID="btn_Recuperar" runat="server" Text="Recuperar" class="btn btn-default" BackColor="#FFFF66" OnClick="btn_Recuperar_Click"  />
                     <asp:Button ID="btn_Limpiar" runat="server" Text="Limpiar" class="btn btn-info" OnClick="btn_Limpiar_Click"  />
-                    <asp:Button ID="btn_Cancelar" runat="server" Text="Cancelar" class="btn btn-default" />
+                    <asp:Button ID="btn_Cancelar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="btn_Cancelar_Click" />
                 </div>
             </div>
         </div>

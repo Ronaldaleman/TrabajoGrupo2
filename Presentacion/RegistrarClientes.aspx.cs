@@ -63,6 +63,11 @@ namespace Presentacion
             txtDireccion.Text = "";
             lblMessage.Text = "";
         }
+
+        protected void Btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
 }
 
