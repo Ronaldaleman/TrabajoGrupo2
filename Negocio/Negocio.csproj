@@ -59,6 +59,7 @@
     <Compile Include="FacturasNegocio.cs" />
     <Compile Include="Factura_DetalleNegocio.cs" />
     <Compile Include="ProductosNegocio.cs" />
+    <Compile Include="ProductoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiciosUca\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -69,6 +70,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">
       <Project>{b19251a8-c612-4447-9f35-966ebf17ae75}</Project>
+      <Project>{B19251A8-C612-4447-9F35-966EBF17AE75}</Project>
       <Name>Datos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
@@ -128,6 +130,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
