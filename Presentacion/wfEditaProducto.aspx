@@ -8,6 +8,9 @@
                 <a href="wfInsertaProducto" class="btn btn-success btn-sm" title="AGREGAR">
                     <span class="glyphicon glyphicon-plus"></span> AGREGAR PRODUCTO 
                 </a>
+                <a href="wfReporteProductos" target="_blank" class="btn btn-success btn-sm" title="AGREGAR">
+                    <span class="glyphicon glyphicon-list-alt"></span> REPORTE PRODUCTO 
+                </a>
                 <%--<asp:Button ID="Button1" runat="server" CssClass="btn btn-success btn-sm" ToolTip="AGREGAR"/><span class="glyphicon glyphicon-plus"></span>--%>
             </div>
             <br/><br/>

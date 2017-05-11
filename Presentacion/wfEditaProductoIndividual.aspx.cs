@@ -15,8 +15,15 @@ namespace Presentacion
         {
             if (!IsPostBack)
             {
-                Entidad.Productos producto = (Entidad.Productos)Session["ObjetoProducto"];
-                CargaDatos(producto);
+                if (Session["sessionIDUsuario"] != null)
+                {
+                    Entidad.Productos producto = (Entidad.Productos)Session["ObjetoProducto"];
+                    CargaDatos(producto);
+                }
+                else
+                {
+                    Response.Redirect("wfLogin");
+                }                
             }
         }
 

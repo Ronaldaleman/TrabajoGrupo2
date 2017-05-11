@@ -13,9 +13,16 @@ namespace Presentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if(!IsPostBack)
             {
-                CargaProductos();
+                if (Session["sessionIDUsuario"] != null)
+                {
+                    CargaProductos();
+                }
+                else
+                {
+                    Response.Redirect("wfLogin");
+                }
             }
         }
 
