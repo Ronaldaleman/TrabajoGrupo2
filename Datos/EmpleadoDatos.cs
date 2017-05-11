@@ -30,7 +30,7 @@ namespace Datos
             try
             {
                 dc = new Entidad.BD_EvaluacionEntities();
-                // Utilizamos liqQ para encontrar el primer 
+                // Utilizamos liqQ para encontrar el primer registro coincidente
                 Entidad.Empleados db_e = dc.Empleados.FirstOrDefault(a => a.Id == e.Id);
                 if (db_e !=null)
                 {
@@ -39,10 +39,8 @@ namespace Datos
                     db_e.Direccion = e.Direccion;
                     db_e.FechaProceso = DateTime.Now;
                     db_e.UsuarioProceso = e.UsuarioProceso;
-                    db_e.Estado = e.Estado;
-                    
+                    db_e.Estado = e.Estado;    
                 }
-
                 return dc.SaveChanges();
             }
             catch (Exception err)
@@ -51,17 +49,37 @@ namespace Datos
             }
         }
 
-        public List<Entidad.Empleados> ListaEmpleado()
+        public int EliminaEmpleadoDatos(Entidad.Empleados e)
+        {
+            try
+            {
+                dc = new Entidad.BD_EvaluacionEntities();
+                // Utilizamos liqQ para encontrar el primer registro coincidente
+                Entidad.Empleados db_e = dc.Empleados.FirstOrDefault(a => a.Id == e.Id);
+                if (db_e != null)
+                {
+                    db_e.FechaProceso = DateTime.Now;
+                    db_e.UsuarioProceso = e.UsuarioProceso;
+                    db_e.Estado = e.Estado;
+                }
+                return dc.SaveChanges();
+            }
+            catch (Exception err)
+            {
+                throw (err);
+            }
+        }
+
+        public List<Entidad.Empleados> ListaEmpleadoDatos()
         {
             dc = new Entidad.BD_EvaluacionEntities();
             try
             {
                 return dc.Empleados.ToList();
             }
-            catch (Exception)
+            catch (Exception err)
             {
-
-                throw;
+                throw(err);
             }
         }
 

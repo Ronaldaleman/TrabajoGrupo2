@@ -17,26 +17,112 @@ namespace Negocio
             int respuesta = 0;
             try
             {
-                if (x.ValidarCedula(e.Cedula)=="1")
+                dc = new Datos.EmpleadoDatos();
+                List<Entidad.Empleados> ListaEmpleados = ListaEmpleadoNegocio();
+                if (!ListaEmpleados.Exists(a => a.Cedula == e.Cedula))
                 {
-                    dc = new Datos.EmpleadoDatos();
-                    List<Entidad.Empleados> ListaEmpleados = new List<Entidad.Empleados>();
-                    if (!ListaEmpleados.Exists(a => a.Cedula == e.Cedula))
-                    {
+                    if (x.ValidarCedula(e.Cedula) == "1")
+                    {                    
                         respuesta = dc.InsertaEmpleadoDatos(e);
                     }
                     else
                     {
-                        throw new Exception("Ya existe un registro con este número de cédula: "+e.Cedula);
+                        throw new Exception("Cédula " + e.Cedula + " no válida");
                     }
                 }
-                
+                else
+                {
+                    throw new Exception("Cédula "+e.Cedula+" ya existe" );
+                }
                 return respuesta;
             }
             catch (Exception err)
             {
                 throw err;
             }
+        }
+
+        public int EditaEmpleadoNegocio(Entidad.Empleados e)
+        {
+            int respuesta = 0;
+            try
+            {
+                dc = new Datos.EmpleadoDatos();
+                List<Entidad.Empleados> ListaEmpleados = ListaEmpleadoNegocio();
+                if (ListaEmpleados.Exists(a => a.Id == e.Id))
+                {
+                    respuesta = dc.EditaEmpleadoDatos(e);  
+                }
+                else
+                {
+                    throw new Exception("El Id de Empleado no existe");
+                }
+                return respuesta;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            
+        }
+
+        public int EliminaEmpleadoNegocio(Entidad.Empleados e)
+        {
+            int respuesta = 0;
+            try
+            {
+                dc = new Datos.EmpleadoDatos();
+                List<Entidad.Empleados> ListaEmpleados = ListaEmpleadoNegocio();
+                if (ListaEmpleados.Exists(a => a.Id == e.Id))
+                {
+                    respuesta = dc.EliminaEmpleadoDatos(e);
+                }
+                else
+                {
+                    throw new Exception("El Id de Empleado no existe");
+                }
+                return respuesta;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+
+        }
+
+        public List<Entidad.Empleados> ListaEmpleadoNegocio()
+        {
+            try
+            {
+                dc = new Datos.EmpleadoDatos();
+                return dc.ListaEmpleadoDatos();
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
+        public Entidad.Empleados BuscaEmpleadoNegocio(int id)
+        {
+            Entidad.Empleados empl = null;
+            try
+            {
+                List<Entidad.Empleados> ListaEmpleados = ListaEmpleadoNegocio();
+                if(ListaEmpleados.Exists(a => a.Id == id))
+                {
+                    empl = ListaEmpleados.Where(a => a.Id == id).FirstOrDefault();
+                }
+                else
+                {
+                    throw new Exception("El empleado no existe");
+                }
+            }
+            catch (Exception err)
+            {  
+                throw err;
+            }
+            return empl;
         }
     }
 }

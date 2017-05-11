@@ -22,23 +22,33 @@ namespace Presentacion
                 empleado.Nombre = txtNombres.Text.Trim().ToUpper();
                 empleado.Cedula = txtNumeroCedula.Text.Trim();
                 empleado.Direccion = txtDireccion.Text.Trim();
+                empleado.FechaProceso = DateTime.Now;
                 empleado.UsuarioProceso = 1;
                 empleado.Estado = 1;
                 Negocio.EmpleadoNegocio en = new Negocio.EmpleadoNegocio();
                 if (en.InsertarEmpleadoNegocio(empleado)>0)
                 {
-                    // Enviar mensaje indicando se inserto el registro de empleado.
+                    // Enviar mensaje indicando se insertó el registro de empleado.
+                    cvDatos.IsValid = false;
+                    cvDatos.ErrorMessage = "Se insertó el registro";
                 }
                 else
                 {
-                    // Enviar mensaje indicando no se inserto el registro de empleado.
+                    // Enviar mensaje indicando no se insertó el registro de empleado.
+                    cvDatos.IsValid = false;
+                    cvDatos.ErrorMessage = "No se insertó el registro";
                 }
-                  
             }
             catch (Exception err)
             {
-                throw err;
+                cvDatos.IsValid = false;
+                cvDatos.ErrorMessage = "ERROR: "+err.Message;
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }

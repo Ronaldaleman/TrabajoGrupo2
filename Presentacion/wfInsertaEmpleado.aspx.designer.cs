@@ -76,6 +76,15 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.ValidationSummary vsDatos;
         
         /// <summary>
+        /// Control cvDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvDatos;
+        
+        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>

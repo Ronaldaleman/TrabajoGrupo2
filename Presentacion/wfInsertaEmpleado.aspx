@@ -39,14 +39,15 @@
                 <div class="col-lg-4">
                     <div class="form-group">
                         <asp:ValidationSummary ID="vsDatos" runat="server" Font-Size="Smaller" ForeColor="#FF3300" />
+                        <asp:CustomValidator ID="cvDatos" runat="server" ControlToValidate="txtDireccion" Text="*" ForeColor="Red"></asp:CustomValidator>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-success" OnClick="btnGuardar_Click"/>
-                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" class="btn btn-info" />
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-default" />
+                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" class="btn btn-info" CausesValidation ="false"/>
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="btnCancelar_Click" CausesValidation="false" />
                 </div>
             </div>
         </div>
