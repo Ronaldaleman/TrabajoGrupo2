@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Negocio.Serviciosuca {
+namespace Negocio.ServiciosUca {
     using System.Runtime.Serialization;
     using System;
     
@@ -137,7 +137,7 @@ namespace Negocio.Serviciosuca {
         private string NumInssField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Negocio.Serviciosuca.Opciones[] OpcionesField;
+        private Negocio.ServiciosUca.Opciones[] OpcionesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -241,7 +241,7 @@ namespace Negocio.Serviciosuca {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Negocio.Serviciosuca.Opciones[] Opciones {
+        public Negocio.ServiciosUca.Opciones[] Opciones {
             get {
                 return this.OpcionesField;
             }
@@ -886,20 +886,20 @@ namespace Negocio.Serviciosuca {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Serviciosuca.IServiciosUca")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiciosUca.IServiciosUca")]
     public interface IServiciosUca {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ValidarUsuario", ReplyAction="http://tempuri.org/IServiciosUca/ValidarUsuarioResponse")]
-        Negocio.Serviciosuca.Sistemas[] ValidarUsuario(string Login, string Clave, string IpConexion);
+        Negocio.ServiciosUca.Sistemas[] ValidarUsuario(string Login, string Clave, string IpConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ValidarUsuario", ReplyAction="http://tempuri.org/IServiciosUca/ValidarUsuarioResponse")]
-        System.Threading.Tasks.Task<Negocio.Serviciosuca.Sistemas[]> ValidarUsuarioAsync(string Login, string Clave, string IpConexion);
+        System.Threading.Tasks.Task<Negocio.ServiciosUca.Sistemas[]> ValidarUsuarioAsync(string Login, string Clave, string IpConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ValidarPermisos", ReplyAction="http://tempuri.org/IServiciosUca/ValidarPermisosResponse")]
-        Negocio.Serviciosuca.UsuarioPermisos ValidarPermisos(string userId, string sistId);
+        Negocio.ServiciosUca.UsuarioPermisos ValidarPermisos(string userId, string sistId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ValidarPermisos", ReplyAction="http://tempuri.org/IServiciosUca/ValidarPermisosResponse")]
-        System.Threading.Tasks.Task<Negocio.Serviciosuca.UsuarioPermisos> ValidarPermisosAsync(string userId, string sistId);
+        System.Threading.Tasks.Task<Negocio.ServiciosUca.UsuarioPermisos> ValidarPermisosAsync(string userId, string sistId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ValidarCedula", ReplyAction="http://tempuri.org/IServiciosUca/ValidarCedulaResponse")]
         string ValidarCedula(string cedula);
@@ -914,43 +914,43 @@ namespace Negocio.Serviciosuca {
         System.Threading.Tasks.Task<string> EliminarRegistroSesionAsync(string IdUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ConsultaSubordinados", ReplyAction="http://tempuri.org/IServiciosUca/ConsultaSubordinadosResponse")]
-        Negocio.Serviciosuca.Subordinados[] ConsultaSubordinados(string inss);
+        Negocio.ServiciosUca.Subordinados[] ConsultaSubordinados(string inss);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ConsultaSubordinados", ReplyAction="http://tempuri.org/IServiciosUca/ConsultaSubordinadosResponse")]
-        System.Threading.Tasks.Task<Negocio.Serviciosuca.Subordinados[]> ConsultaSubordinadosAsync(string inss);
+        System.Threading.Tasks.Task<Negocio.ServiciosUca.Subordinados[]> ConsultaSubordinadosAsync(string inss);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ConsultaJefe", ReplyAction="http://tempuri.org/IServiciosUca/ConsultaJefeResponse")]
-        Negocio.Serviciosuca.DatosJefe ConsultaJefe(string inss);
+        Negocio.ServiciosUca.DatosJefe ConsultaJefe(string inss);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/ConsultaJefe", ReplyAction="http://tempuri.org/IServiciosUca/ConsultaJefeResponse")]
-        System.Threading.Tasks.Task<Negocio.Serviciosuca.DatosJefe> ConsultaJefeAsync(string inss);
+        System.Threading.Tasks.Task<Negocio.ServiciosUca.DatosJefe> ConsultaJefeAsync(string inss);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/OPS_prematricula", ReplyAction="http://tempuri.org/IServiciosUca/OPS_prematriculaResponse")]
-        Negocio.Serviciosuca.OPS_response OPS_prematricula(Negocio.Serviciosuca.OPS_request ops);
+        Negocio.ServiciosUca.OPS_response OPS_prematricula(Negocio.ServiciosUca.OPS_request ops);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/OPS_prematricula", ReplyAction="http://tempuri.org/IServiciosUca/OPS_prematriculaResponse")]
-        System.Threading.Tasks.Task<Negocio.Serviciosuca.OPS_response> OPS_prematriculaAsync(Negocio.Serviciosuca.OPS_request ops);
+        System.Threading.Tasks.Task<Negocio.ServiciosUca.OPS_response> OPS_prematriculaAsync(Negocio.ServiciosUca.OPS_request ops);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/Consulta_OPS", ReplyAction="http://tempuri.org/IServiciosUca/Consulta_OPSResponse")]
-        Negocio.Serviciosuca.Datos_OPS Consulta_OPS(string codigo);
+        Negocio.ServiciosUca.Datos_OPS Consulta_OPS(string codigo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/Consulta_OPS", ReplyAction="http://tempuri.org/IServiciosUca/Consulta_OPSResponse")]
-        System.Threading.Tasks.Task<Negocio.Serviciosuca.Datos_OPS> Consulta_OPSAsync(string codigo);
+        System.Threading.Tasks.Task<Negocio.ServiciosUca.Datos_OPS> Consulta_OPSAsync(string codigo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/Consulta_OPS_Carnet", ReplyAction="http://tempuri.org/IServiciosUca/Consulta_OPS_CarnetResponse")]
-        Negocio.Serviciosuca.Datos_OPS[] Consulta_OPS_Carnet(string codigo);
+        Negocio.ServiciosUca.Datos_OPS[] Consulta_OPS_Carnet(string codigo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosUca/Consulta_OPS_Carnet", ReplyAction="http://tempuri.org/IServiciosUca/Consulta_OPS_CarnetResponse")]
-        System.Threading.Tasks.Task<Negocio.Serviciosuca.Datos_OPS[]> Consulta_OPS_CarnetAsync(string codigo);
+        System.Threading.Tasks.Task<Negocio.ServiciosUca.Datos_OPS[]> Consulta_OPS_CarnetAsync(string codigo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiciosUcaChannel : Negocio.Serviciosuca.IServiciosUca, System.ServiceModel.IClientChannel {
+    public interface IServiciosUcaChannel : Negocio.ServiciosUca.IServiciosUca, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiciosUcaClient : System.ServiceModel.ClientBase<Negocio.Serviciosuca.IServiciosUca>, Negocio.Serviciosuca.IServiciosUca {
+    public partial class ServiciosUcaClient : System.ServiceModel.ClientBase<Negocio.ServiciosUca.IServiciosUca>, Negocio.ServiciosUca.IServiciosUca {
         
         public ServiciosUcaClient() {
         }
@@ -971,19 +971,19 @@ namespace Negocio.Serviciosuca {
                 base(binding, remoteAddress) {
         }
         
-        public Negocio.Serviciosuca.Sistemas[] ValidarUsuario(string Login, string Clave, string IpConexion) {
+        public Negocio.ServiciosUca.Sistemas[] ValidarUsuario(string Login, string Clave, string IpConexion) {
             return base.Channel.ValidarUsuario(Login, Clave, IpConexion);
         }
         
-        public System.Threading.Tasks.Task<Negocio.Serviciosuca.Sistemas[]> ValidarUsuarioAsync(string Login, string Clave, string IpConexion) {
+        public System.Threading.Tasks.Task<Negocio.ServiciosUca.Sistemas[]> ValidarUsuarioAsync(string Login, string Clave, string IpConexion) {
             return base.Channel.ValidarUsuarioAsync(Login, Clave, IpConexion);
         }
         
-        public Negocio.Serviciosuca.UsuarioPermisos ValidarPermisos(string userId, string sistId) {
+        public Negocio.ServiciosUca.UsuarioPermisos ValidarPermisos(string userId, string sistId) {
             return base.Channel.ValidarPermisos(userId, sistId);
         }
         
-        public System.Threading.Tasks.Task<Negocio.Serviciosuca.UsuarioPermisos> ValidarPermisosAsync(string userId, string sistId) {
+        public System.Threading.Tasks.Task<Negocio.ServiciosUca.UsuarioPermisos> ValidarPermisosAsync(string userId, string sistId) {
             return base.Channel.ValidarPermisosAsync(userId, sistId);
         }
         
@@ -1003,43 +1003,43 @@ namespace Negocio.Serviciosuca {
             return base.Channel.EliminarRegistroSesionAsync(IdUsuario);
         }
         
-        public Negocio.Serviciosuca.Subordinados[] ConsultaSubordinados(string inss) {
+        public Negocio.ServiciosUca.Subordinados[] ConsultaSubordinados(string inss) {
             return base.Channel.ConsultaSubordinados(inss);
         }
         
-        public System.Threading.Tasks.Task<Negocio.Serviciosuca.Subordinados[]> ConsultaSubordinadosAsync(string inss) {
+        public System.Threading.Tasks.Task<Negocio.ServiciosUca.Subordinados[]> ConsultaSubordinadosAsync(string inss) {
             return base.Channel.ConsultaSubordinadosAsync(inss);
         }
         
-        public Negocio.Serviciosuca.DatosJefe ConsultaJefe(string inss) {
+        public Negocio.ServiciosUca.DatosJefe ConsultaJefe(string inss) {
             return base.Channel.ConsultaJefe(inss);
         }
         
-        public System.Threading.Tasks.Task<Negocio.Serviciosuca.DatosJefe> ConsultaJefeAsync(string inss) {
+        public System.Threading.Tasks.Task<Negocio.ServiciosUca.DatosJefe> ConsultaJefeAsync(string inss) {
             return base.Channel.ConsultaJefeAsync(inss);
         }
         
-        public Negocio.Serviciosuca.OPS_response OPS_prematricula(Negocio.Serviciosuca.OPS_request ops) {
+        public Negocio.ServiciosUca.OPS_response OPS_prematricula(Negocio.ServiciosUca.OPS_request ops) {
             return base.Channel.OPS_prematricula(ops);
         }
         
-        public System.Threading.Tasks.Task<Negocio.Serviciosuca.OPS_response> OPS_prematriculaAsync(Negocio.Serviciosuca.OPS_request ops) {
+        public System.Threading.Tasks.Task<Negocio.ServiciosUca.OPS_response> OPS_prematriculaAsync(Negocio.ServiciosUca.OPS_request ops) {
             return base.Channel.OPS_prematriculaAsync(ops);
         }
         
-        public Negocio.Serviciosuca.Datos_OPS Consulta_OPS(string codigo) {
+        public Negocio.ServiciosUca.Datos_OPS Consulta_OPS(string codigo) {
             return base.Channel.Consulta_OPS(codigo);
         }
         
-        public System.Threading.Tasks.Task<Negocio.Serviciosuca.Datos_OPS> Consulta_OPSAsync(string codigo) {
+        public System.Threading.Tasks.Task<Negocio.ServiciosUca.Datos_OPS> Consulta_OPSAsync(string codigo) {
             return base.Channel.Consulta_OPSAsync(codigo);
         }
         
-        public Negocio.Serviciosuca.Datos_OPS[] Consulta_OPS_Carnet(string codigo) {
+        public Negocio.ServiciosUca.Datos_OPS[] Consulta_OPS_Carnet(string codigo) {
             return base.Channel.Consulta_OPS_Carnet(codigo);
         }
         
-        public System.Threading.Tasks.Task<Negocio.Serviciosuca.Datos_OPS[]> Consulta_OPS_CarnetAsync(string codigo) {
+        public System.Threading.Tasks.Task<Negocio.ServiciosUca.Datos_OPS[]> Consulta_OPS_CarnetAsync(string codigo) {
             return base.Channel.Consulta_OPS_CarnetAsync(codigo);
         }
     }

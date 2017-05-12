@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="NegocioClientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\Serviciosuca\Reference.cs">
+    <Compile Include="Service References\ServiciosUca\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -56,49 +56,49 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\Serviciosuca\Negocio.Serviciosuca.DatosJefe.datasource">
+    <None Include="Service References\ServiciosUca\Negocio.ServiciosUca.DatosJefe1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Serviciosuca\Negocio.Serviciosuca.Datos_OPS.datasource">
+    <None Include="Service References\ServiciosUca\Negocio.ServiciosUca.Datos_OPS1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Serviciosuca\Negocio.Serviciosuca.OPS_response.datasource">
+    <None Include="Service References\ServiciosUca\Negocio.ServiciosUca.OPS_response1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Serviciosuca\Negocio.Serviciosuca.Sistemas.datasource">
+    <None Include="Service References\ServiciosUca\Negocio.ServiciosUca.Sistemas1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Serviciosuca\Negocio.Serviciosuca.Subordinados.datasource">
+    <None Include="Service References\ServiciosUca\Negocio.ServiciosUca.Subordinados1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Serviciosuca\Negocio.Serviciosuca.UsuarioPermisos.datasource">
+    <None Include="Service References\ServiciosUca\Negocio.ServiciosUca.UsuarioPermisos1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Serviciosuca\ServiciosUca.wsdl" />
-    <None Include="Service References\Serviciosuca\ServiciosUca.xsd">
+    <None Include="Service References\ServiciosUca\ServiciosUca.wsdl" />
+    <None Include="Service References\ServiciosUca\ServiciosUca.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Serviciosuca\ServiciosUca1.xsd">
+    <None Include="Service References\ServiciosUca\ServiciosUca1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Serviciosuca\ServiciosUca2.xsd">
+    <None Include="Service References\ServiciosUca\ServiciosUca2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\Serviciosuca\" />
+    <WCFMetadataStorage Include="Service References\ServiciosUca\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Serviciosuca\ServiciosUca.disco" />
+    <None Include="Service References\ServiciosUca\ServiciosUca.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Serviciosuca\configuration91.svcinfo" />
+    <None Include="Service References\ServiciosUca\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Serviciosuca\configuration.svcinfo" />
+    <None Include="Service References\ServiciosUca\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Serviciosuca\Reference.svcmap">
+    <None Include="Service References\ServiciosUca\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
