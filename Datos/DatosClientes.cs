@@ -81,12 +81,7 @@ namespace Datos
             }
         }
 
-        //public void BajaCliente()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        public Entidad.Clientes ConsultarCliente(int CodCliente)
+       public Entidad.Clientes ConsultarCliente(int CodCliente)
         {
             Entidad.Clientes cl = new Entidad.Clientes();
             Entidad.BD_EvaluacionEntities dc = null;
